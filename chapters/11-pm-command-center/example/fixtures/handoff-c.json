@@ -1,0 +1,9 @@
+{
+  "status": "INCOMPLETE",
+  "missing_artifacts": [
+    "risk"
+  ],
+  "reason": "A required specialist output is unavailable.",
+  "executed_action": "local handoff only",
+  "publication": "none"
+}
