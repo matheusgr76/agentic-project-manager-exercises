@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Acme PM Command Center</title><style>:root { font-family: Arial, sans-serif; color: #172333; background: #f4f6f8; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1120px; margin: 0 auto; padding: 32px 20px 60px; }
+header { background: #14273b; color: white; padding: 30px; border-radius: 16px; }
+h1 { font-size: 2rem; margin: 8px 0 12px; }
+h2 { font-size: 1.2rem; margin: 0 0 16px; }
+h3 { font-size: 1rem; margin: 0 0 12px; }
+p { line-height: 1.5; }
+section { margin-top: 28px; }
+.eyebrow { margin: 0; color: #a9c9d2; letter-spacing: .12em; font-size: .75rem; }
+.notice { background: #fff5df; border-left: 5px solid #bd7b18; padding: 20px 24px; border-radius: 8px; }
+.notice ul { margin-bottom: 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.card, .split > div { background: white; border: 1px solid #dce3e8; border-radius: 12px; padding: 20px; }
+.value { font-weight: 700; font-size: 1.2rem; margin: 0; }
+.quality { color: #576676; font-size: .9rem; margin: 6px 0 16px; }
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+li { margin: 7px 0; line-height: 1.4; overflow-wrap: anywhere; }
+details { border-top: 1px solid #e6ebef; padding-top: 12px; font-size: .86rem; }
+summary { cursor: pointer; font-weight: 700; }
+footer { margin-top: 36px; font-size: .82rem; color: #576676; }
+</style></head><body><main><header><p class="eyebrow">FICTIONAL ACME · LOCAL EXERCISE</p><h1>PM Command Center</h1><p>Knowledge as of 2026-11-12 · Coordinator state: <strong>REVIEW_REQUIRED</strong></p></header><section class="notice"><h2>Review before acting</h2><ul><li>Risk assessment predates the report; confirm its signals again before using it as current. Dependency investigation has no dated run field.</li></ul></section><section><h2>Recorded position at selected date</h2><div class="grid"><article class="card"><h3>Decision DEC-12/v2</h3><p class="value">PENDING</p><p class="quality">CURRENT</p><details><summary>Sources</summary><ul><li>E-01: acme-practice-packet/inputs/decisions.csv</li></ul></details></article><article class="card"><h3>GH-41 investigation</h3><p class="value">UNDATED_CONTEXT</p><p class="quality">No dated as-of claim</p><details><summary>Sources</summary><ul><li>E-02: chapters/07-dependency-agent/example/expected-results.md</li></ul></details></article><article class="card"><h3>Reporting run</h3><p class="value">REVIEW_REQUIRED</p><p class="quality">2026-11-12T07:30:00Z</p><details><summary>Sources</summary><ul><li>Chapter 9 coordinator handoff</li></ul></details></article></div></section><section><h2>Hypotheses</h2><div class="grid"><article class="card"><h3>R1 release risk</h3><p class="value">HYPOTHESIS</p><p class="quality">Hypothesis; review state CURRENT</p><details><summary>Sources</summary><ul><li>E-03: chapters/09-one-agent-is-not-enough/example/fixtures/risk-a.json</li></ul></details></article></div></section><section class="split"><div><h2>Human review queue</h2><ul><li>Confirm DEC-12/v2 approval with its decision owner</li><li>Ask owners to refresh the risk signals and confirm a fallback sequence.</li></ul></div><div><h2>Component snapshots</h2><ul><li><strong>dependency</strong>: UNRESOLVED · not recorded</li><li><strong>risk</strong>: EMERGING_RISK_FOR_REVIEW · 2026-11-09</li><li><strong>report</strong>: REVIEW_REQUIRED · 2026-11-12T07:30:00Z</li><li><strong>shared references</strong>: DEC-12, GH-41</li></ul></div></section><footer>Read-only view. No issue, decision, message, or forecast was changed.</footer></main></body></html>

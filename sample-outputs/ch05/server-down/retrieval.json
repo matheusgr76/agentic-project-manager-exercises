@@ -1,0 +1,8 @@
+{
+  "case": "server-down",
+  "source": "fictional mock retrieval",
+  "status": "UNAVAILABLE",
+  "record_id": "GH-41",
+  "evidence_created": false,
+  "error": "Mock issue service unavailable"
+}

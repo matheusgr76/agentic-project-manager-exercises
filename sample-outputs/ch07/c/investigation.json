@@ -1,0 +1,26 @@
+{
+  "exception_id": "GH-41",
+  "classification": "UNRESOLVED",
+  "evidence_references": [
+    "GH-41"
+  ],
+  "findings": [
+    "Evidence retrieval failed: Missing decision record DEC-12"
+  ],
+  "unresolved_questions": [
+    "What does the missing source establish?"
+  ],
+  "recommended_action": "Ask the PM to inspect the missing evidence.",
+  "executed_action": "Updated local exception register",
+  "authority_used": [
+    "READ issue GH-41",
+    "READ decision DEC-12",
+    "WRITE local exception register"
+  ],
+  "stop_reason": "evidence_unavailable",
+  "retrieval_calls": 2,
+  "retrieval_trace": [
+    "READ issue GH-41",
+    "READ decision DEC-12"
+  ]
+}

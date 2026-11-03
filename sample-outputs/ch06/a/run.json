@@ -1,0 +1,20 @@
+{
+  "case": "A",
+  "run_at_utc": "2026-11-12T07:30:00Z",
+  "status": "COMPLETE",
+  "publication": "PM approval required; nothing sent",
+  "source_inventory": {
+    "github_issue": "available",
+    "decision": "PENDING",
+    "capacity_fixture": "workshop/fixtures/current-capacity.csv",
+    "capacity_snapshot_date": "2026-11-12"
+  },
+  "findings": [
+    "GH-41 and DEC-12 have consistent states."
+  ],
+  "artifacts": [
+    "evidence.json",
+    "management-draft.md",
+    "engineering-draft.md"
+  ]
+}

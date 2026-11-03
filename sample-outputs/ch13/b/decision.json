@@ -1,0 +1,14 @@
+{
+  "request_id": "REQ-13-02",
+  "action": "publish_report",
+  "target": "weekly-status",
+  "actor_role": "agent",
+  "identity_source": "fictional trusted context",
+  "source_id": "S-13-01",
+  "approval_id": "",
+  "policy_version": "v1",
+  "state": "DENIED_ROLE",
+  "reason": "Actor role cannot perform this action",
+  "execution": "none",
+  "publication": "none"
+}

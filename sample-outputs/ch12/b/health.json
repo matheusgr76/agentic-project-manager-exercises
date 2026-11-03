@@ -1,0 +1,13 @@
+{
+  "case": "b",
+  "run_id": "RUN-11-02",
+  "attempt": 1,
+  "run_at_utc": "2026-11-12T08:00:00Z",
+  "source_status": "PARTIAL",
+  "risk_source_date": "2026-11-09",
+  "risk_age_days": 3,
+  "state": "BLOCKED_SOURCE",
+  "reason": "Simulated retrieval is partial",
+  "model_sha256": "dd3dc6083f7063ace6652951e3e923b527afb3c7059a5bdfb5918754d166af93",
+  "publication": "none"
+}

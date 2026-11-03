@@ -1,0 +1,14 @@
+{
+  "request_id": "REQ-13-06",
+  "action": "draft_note",
+  "target": "local-review-note",
+  "actor_role": "agent",
+  "identity_source": "fictional trusted context",
+  "source_id": "RUN-11-01",
+  "approval_id": "",
+  "policy_version": "v1",
+  "state": "LOCAL_ALLOWED",
+  "reason": "Local read or draft check passed; no action executed",
+  "execution": "none",
+  "publication": "none"
+}
