@@ -1,0 +1,29 @@
+{
+  "status": "REVIEW_REQUIRED",
+  "source_statuses": {
+    "dependency": "UNRESOLVED",
+    "risk": "EMERGING_RISK_FOR_REVIEW",
+    "report": "REVIEW_REQUIRED"
+  },
+  "source_dates": {
+    "dependency": "not recorded",
+    "risk": "2026-11-09",
+    "report": "2026-11-12T07:30:00Z"
+  },
+  "shared_references": [
+    "DEC-12",
+    "GH-41"
+  ],
+  "risk_signal_references": [
+    "S-01",
+    "S-02",
+    "S-03"
+  ],
+  "disagreement": null,
+  "freshness_note": "Risk assessment predates the report; confirm its signals again before using it as current. Dependency investigation has no dated run field.",
+  "pm_question": "Are the contract and environment dates still current?",
+  "proposed_action": "Ask owners to refresh the risk signals and confirm a fallback sequence.",
+  "executed_action": "local handoff only",
+  "publication": "none",
+  "decision_owner": "Acme PM"
+}

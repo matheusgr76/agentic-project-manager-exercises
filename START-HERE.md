@@ -8,7 +8,7 @@ You can use this repository without a GitHub account, Microsoft Office, a compan
 2. Open the extracted folder. You should see this file, README.md, the chapters folder, and the workshop folder together.
 3. For Chapters 1–3, open the linked CSV in Google Sheets or a text editor. Make your own assessment, use the chapter's copyable prompt, then inspect its worked output.
 
-## Chapters 4–10: run before you build
+## Chapters 4–11: run before you build
 
 These examples use **Python 3.10 or newer** and only its built-in libraries. If Python is not available, ask your coding assistant to help you set it up from the [official Python download page](https://www.python.org/downloads/). You can check it with:
 
@@ -21,7 +21,7 @@ Open a terminal in the extracted repository folder. On Windows, you can open the
 If a terminal is unfamiliar, open the extracted folder in your coding assistant and paste:
 
 ~~~text
-Read START-HERE.md. Run the local Chapter 4 through 10 example commands in order. Do not edit source files or connect any account. After each run, open the named output files and explain in plain language what the evidence establishes, what remains uncertain, and why the workflow stopped. Ask me before any action outside this folder.
+Read START-HERE.md. Run the local Chapter 4 through 11 example commands in order. Do not edit source files or connect any account. After each run, open the named output files and explain in plain language what the evidence establishes, what remains uncertain, and why the workflow stopped. Ask me before any action outside this folder.
 ~~~
 
 ### Chapter 4 — your first reliable report
@@ -92,6 +92,16 @@ python chapters/10-project-that-remembers/example/knowledge_base.py --scenario c
 ~~~
 
 Open chapters/10-project-that-remembers/example/outputs/a/knowledge.json. The [Chapter 10 guide](chapters/10-project-that-remembers/README.md) explains the source versions, undated Chapter 7 context, later invented approval, and conflicting decision export. These are isolated fictional variations. The reader never approves a decision or changes the shared Acme records.
+
+### Chapter 11 — review the Command Center
+
+~~~text
+python chapters/11-pm-command-center/example/dashboard.py --scenario a
+python chapters/11-pm-command-center/example/dashboard.py --scenario b
+python chapters/11-pm-command-center/example/dashboard.py --scenario c
+~~~
+
+Open chapters/11-pm-command-center/example/outputs/a/index.html in a browser. The [Chapter 11 guide](chapters/11-pm-command-center/README.md) explains how the read-only local page separates recorded positions, risk hypotheses, source dates, and human review. Scenario B shows a conflict; C shows an incomplete handoff. No command sends, approves, or publishes anything.
 
 ## If something fails
 
