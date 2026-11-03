@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Days 1–30",
+    "first_day": 1,
+    "last_day": 30,
+    "focus": "Choose one bounded task and measure a manual baseline",
+    "exit_evidence": "Owner, source, baseline records, and accepted-output rule"
+  },
+  {
+    "name": "Days 31–60",
+    "first_day": 31,
+    "last_day": 60,
+    "focus": "Run an approved read-only supervised trial",
+    "exit_evidence": "Paired time, accepted outputs, corrections, fallback, and stop logs"
+  },
+  {
+    "name": "Days 61–90",
+    "first_day": 61,
+    "last_day": 90,
+    "focus": "Review reliability, authority, full cost, and observed outcomes",
+    "exit_evidence": "Human continue, change, or retire decision with cited evidence"
+  }
+]
