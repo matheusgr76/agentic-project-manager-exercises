@@ -1,0 +1,4 @@
+id,title,status,owner,updated_at,dependency
+GH-41,Bravo integration sizing,BLOCKED,Bravo,2026-11-05,DEC-12
+GH-42,Independent interface sizing,IN_PROGRESS,Bravo,2026-11-05,
+GH-43,Alpha data contract,IN_PROGRESS,Alpha,2026-11-05,DEC-12
