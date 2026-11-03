@@ -1,0 +1,63 @@
+{
+  "state": "REVIEW_REQUIRED",
+  "as_of": "2026-11-12",
+  "alerts": [
+    "Risk assessment predates the report; confirm its signals again before using it as current. Dependency investigation has no dated run field."
+  ],
+  "facts": [
+    {
+      "label": "Decision DEC-12/v2",
+      "value": "PENDING",
+      "quality": "CURRENT",
+      "sources": [
+        "E-01: acme-practice-packet/inputs/decisions.csv"
+      ]
+    },
+    {
+      "label": "GH-41 investigation",
+      "value": "UNDATED_CONTEXT",
+      "quality": "No dated as-of claim",
+      "sources": [
+        "E-02: chapters/07-dependency-agent/example/expected-results.md"
+      ]
+    },
+    {
+      "label": "Reporting run",
+      "value": "REVIEW_REQUIRED",
+      "quality": "2026-11-12T07:30:00Z",
+      "sources": [
+        "Chapter 9 coordinator handoff"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "label": "R1 release risk",
+      "value": "HYPOTHESIS",
+      "quality": "Hypothesis; review state CURRENT",
+      "sources": [
+        "E-03: chapters/09-one-agent-is-not-enough/example/fixtures/risk-a.json"
+      ]
+    }
+  ],
+  "human_review": [
+    "Confirm DEC-12/v2 approval with its decision owner",
+    "Ask owners to refresh the risk signals and confirm a fallback sequence."
+  ],
+  "activity": {
+    "dependency": "UNRESOLVED \u00b7 not recorded",
+    "risk": "EMERGING_RISK_FOR_REVIEW \u00b7 2026-11-09",
+    "report": "REVIEW_REQUIRED \u00b7 2026-11-12T07:30:00Z",
+    "shared references": "DEC-12, GH-41"
+  },
+  "source_dates": {
+    "dependency": "not recorded",
+    "risk": "2026-11-09",
+    "report": "2026-11-12T07:30:00Z"
+  },
+  "shared_references": [
+    "DEC-12",
+    "GH-41"
+  ],
+  "publication": "none"
+}
