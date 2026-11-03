@@ -18,6 +18,10 @@ python --version
 
 Open a terminal in the extracted repository folder. On Windows, you can open the folder in File Explorer, type **powershell** in its address bar, and press Enter. The commands below assume the terminal is in the folder containing this file. If Python says it cannot find the workshop module, check that location.
 
+If `python` is not found, try `python3` in every command below. On many macOS and Linux machines only `python3` is installed.
+
+Some book figures show shorter commands, such as `python agent.py --scenario a`. Those run from inside the example's own folder. The commands in this guide run from the repository root and do the same thing, so pick one style and stay with it.
+
 If a terminal is unfamiliar, open the extracted folder in your coding assistant and paste:
 
 ~~~text

@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
-from agent import EXAMPLE_DIR, LocalTools, investigate, load_handoff, run_scenario
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from agent import EXAMPLE_DIR, LocalTools, investigate, load_handoff, run_scenario  # noqa: E402
 
 
 class DependencyAgentTests(unittest.TestCase):
