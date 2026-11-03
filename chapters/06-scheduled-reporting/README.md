@@ -1,5 +1,7 @@
 # Chapter 6 — schedule and policy
 
+**First run, no scheduler:** Follow [Start Here](../../START-HERE.md#chapter-6--a-scheduled-run-without-a-scheduler) to run the [four local policy cases](../../workshop/README.md). Case C writes an exception file that the Chapter 7 agent can read. The example does not send or publish anything.
+
 **Compare your work:** The [fictional case matrix](case-matrix.csv) and [worked run output](example-output.md) show what each stop status should mean. The matrix introduces a clearly labeled fresh-capacity test snapshot; it does not alter Chapter 4's source files.
 
 ## Copyable coding-agent prompt

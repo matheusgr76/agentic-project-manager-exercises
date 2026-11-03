@@ -1,5 +1,7 @@
 # Chapter 4 — build the local Acme Report Builder
 
+**First run, no coding:** Follow [Start Here](../../START-HERE.md#chapter-4--your-first-reliable-report) and run the [reference Report Builder](../../workshop/README.md). It produces a real evidence file and weekly draft from the supplied inputs. Then use the prompt below to build your own version and compare behavior.
+
 **Compare your work:** After running your own program on the shared CSV inputs, compare its findings and weekly draft with this [worked output](example-output.md). Wording can differ; evidence and boundaries should agree.
 
 **Tools:** a local folder, Python or another language you can run, and a coding agent such as Codex. This chapter asks you to build the program; the packet supplies the starter data rather than a completed implementation.

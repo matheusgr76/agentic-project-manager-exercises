@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from agent import EXAMPLE_DIR, LocalTools, investigate, run_scenario
+from agent import EXAMPLE_DIR, LocalTools, investigate, load_handoff, run_scenario
 
 
 class DependencyAgentTests(unittest.TestCase):
@@ -111,6 +111,26 @@ class DependencyAgentTests(unittest.TestCase):
             tools.read("issue", "../GH-41")
 
         self.assertEqual(tools.calls, 0)
+
+    def test_chapter_six_exception_handoff(self) -> None:
+        path = self.output_dir / "exception.json"
+        path.write_text(
+            json.dumps(
+                {
+                    "exception_id": "GH-41",
+                    "issue_status": "IN_PROGRESS",
+                    "decision_id": "DEC-12",
+                    "decision_status": "PENDING",
+                }
+            ),
+            encoding="utf-8",
+        )
+
+        self.assertEqual(load_handoff(path), "GH-41")
+        self.assertEqual(
+            run_scenario("a", self.output_dir)["stop_reason"],
+            "human_approval_required",
+        )
 
 
 if __name__ == "__main__":

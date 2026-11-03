@@ -1,0 +1,70 @@
+# Start here — the book exercises
+
+You can use this repository without a GitHub account, Microsoft Office, a company connection, or an API key. Acme and all records are fictional. The early exercises develop your judgment; the later ones let you **run** small programs before you try building your own.
+
+## Get the files
+
+1. On the [repository page](https://github.com/matheusgr76/agentic-project-manager-exercises), choose **Code → Download ZIP**, then extract the ZIP. You do not need to learn Git for these exercises. GitHub's [download instructions](https://docs.github.com/en/repositories/working-with-files/using-files/downloading-files-from-github) show this route.
+2. Open the extracted folder. You should see this file, README.md, the chapters folder, and the workshop folder together.
+3. For Chapters 1–3, open the linked CSV in Google Sheets or a text editor. Make your own assessment, use the chapter's copyable prompt, then inspect its worked output.
+
+## Chapters 4–7: run before you build
+
+These examples use **Python 3.10 or newer** and only its built-in libraries. If Python is not available, ask your coding assistant to help you set it up from the [official Python download page](https://www.python.org/downloads/). You can check it with:
+
+~~~text
+python --version
+~~~
+
+Open a terminal in the extracted repository folder. On Windows, you can open the folder in File Explorer, type **powershell** in its address bar, and press Enter. The commands below assume the terminal is in the folder containing this file. If Python says it cannot find the workshop module, check that location.
+
+If a terminal is unfamiliar, open the extracted folder in your coding assistant and paste:
+
+~~~text
+Read START-HERE.md. Run the local Chapter 4, 5, 6, and 7 example commands in order. Do not edit source files or connect any account. After each run, open the named output files and explain in plain language what the evidence establishes, what remains uncertain, and why the workflow stopped. Ask me before any action outside this folder.
+~~~
+
+### Chapter 4 — your first reliable report
+
+~~~text
+python -m workshop.report_builder
+~~~
+
+Open workshop/outputs/ch4/evidence.json and workshop/outputs/ch4/weekly-status.md. You should see GH-41 BLOCKED, DEC-12 PENDING, Alpha and Bravo capacity stale, and no delivery commitment. Compare with the [worked output](chapters/04-report-builder/example-output.md). The program is a reference example; the chapter also invites you to build your own with a coding agent.
+
+### Chapter 5 — a mock connected read
+
+~~~text
+python -m workshop.connected_pilot --case success
+python -m workshop.connected_pilot --case server-down
+~~~
+
+Open workshop/outputs/ch5/success/retrieval.json and workshop/outputs/ch5/server-down/retrieval.json. The first records a mock issue read and preserves GH-41; the second shows a visible retrieval failure and creates no evidence report. No network connection is made. Compare with the [worked pilot](chapters/05-connected-reporting/example-output.md).
+
+### Chapter 6 — a scheduled run without a scheduler
+
+~~~text
+python -m workshop.scheduled_run --case A
+python -m workshop.scheduled_run --case C
+~~~
+
+Open workshop/outputs/ch6/a/run.json and workshop/outputs/ch6/c/run.json. A prepares local drafts with status COMPLETE; C detects GH-41 IN_PROGRESS while DEC-12 is PENDING and stops at REVIEW_REQUIRED. The [case matrix](chapters/06-scheduled-reporting/case-matrix.csv) also includes failed retrieval B and untrusted comment D. The fresh capacity file is an [invented test fixture](workshop/fixtures/README.md), separate from Chapter 4's older source.
+
+### Chapter 7 — investigate the Chapter 6 exception
+
+After running Chapter 6 case C, copy this command:
+
+~~~text
+python chapters/07-dependency-agent/example/agent.py --scenario a --exception-file workshop/outputs/ch6/c/exception.json
+~~~
+
+The agent accepts the exception, chooses three local records to inspect, updates a local exception register, and stops before a human approval is needed. Open chapters/07-dependency-agent/example/outputs/a/investigation.json and compare it with the [sample investigation](chapters/07-dependency-agent/example/sample-investigation.md). This offline example has explicit decision rules; the [model-assisted prompt](chapters/07-dependency-agent/example/investigation-prompt.md) is a separate learning path and needs an approved model environment.
+
+## If something fails
+
+- **Python command not found:** install Python from the official page above, then open a new terminal and check python --version.
+- **No module named workshop:** reopen the terminal in the folder containing START-HERE.md.
+- **Missing decision record in Chapter 7 scenario C:** that failure is intentional; run scenario A for the normal handoff.
+- **Different wording from a worked output:** compare source IDs, decisions, uncertainty, and stop reasons. Exact phrasing is not the goal.
+
+No command sends a message, changes a GitHub issue, publishes a report, or touches a real company system. Your generated files stay in ignored local outputs folders.

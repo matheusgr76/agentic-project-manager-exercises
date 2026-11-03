@@ -207,7 +207,29 @@ def investigate(exception_id: str, tools: LocalTools) -> Dict[str, object]:
     return result
 
 
-def run_scenario(scenario: str, output_dir: Path) -> Dict[str, object]:
+def load_handoff(path: Path) -> str:
+    """Validate the Chapter 6 exception before investigating it."""
+    try:
+        handoff = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise ValueError("Cannot read Chapter 6 exception file") from error
+    expected = {
+        "exception_id": "GH-41",
+        "issue_status": "IN_PROGRESS",
+        "decision_id": "DEC-12",
+        "decision_status": "PENDING",
+    }
+    if any(handoff.get(key) != value for key, value in expected.items()):
+        raise ValueError("Exception does not match the Chapter 7 test scenario")
+    LOGGER.info("Accepted Chapter 6 exception %s", handoff["exception_id"])
+    return str(handoff["exception_id"])
+
+
+def run_scenario(
+    scenario: str,
+    output_dir: Path,
+    exception_id: str = "GH-41",
+) -> Dict[str, object]:
     records_dir = EXAMPLE_DIR / "scenarios" / scenario
     if not records_dir.is_dir():
         raise ValueError(f"Unknown scenario: {scenario}")
@@ -217,7 +239,7 @@ def run_scenario(scenario: str, output_dir: Path) -> Dict[str, object]:
         register_path=output_dir / "exception-register.json",
         max_calls=load_limit(EXAMPLE_DIR / "agent-policy.md"),
     )
-    result = investigate("GH-41", tools)
+    result = investigate(exception_id, tools)
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "investigation.json").write_text(
         json.dumps(result, indent=2, ensure_ascii=False) + "\n",
@@ -230,6 +252,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--scenario", choices=("a", "b", "c"), required=True)
     parser.add_argument("--output-dir", type=Path)
+    parser.add_argument("--exception-file", type=Path)
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -237,7 +260,13 @@ def main() -> None:
         format="%(asctime)s %(levelname)s %(message)s",
     )
     output_dir = args.output_dir or EXAMPLE_DIR / "outputs" / args.scenario
-    result = run_scenario(args.scenario, output_dir)
+    try:
+        exception_id = (
+            load_handoff(args.exception_file) if args.exception_file else "GH-41"
+        )
+        result = run_scenario(args.scenario, output_dir, exception_id)
+    except (OSError, ValueError) as error:
+        parser.exit(1, f"Dependency agent stopped: {error}\n")
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
 
