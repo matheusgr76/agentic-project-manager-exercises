@@ -1,0 +1,22 @@
+{
+  "assessment_date": "2026-11-09",
+  "classification": "EMERGING_RISK_FOR_REVIEW",
+  "risk_statement": "R1 integration and testing may miss the planned window if the v2 data contract and test environment are not ready.",
+  "evidence_references": [
+    "S-01",
+    "S-02",
+    "S-03"
+  ],
+  "chapter_7_context": [
+    "GH-41",
+    "DEC-12"
+  ],
+  "excluded_signals": [],
+  "evidence_quality": "three current cross-team records; dates and ownership still require confirmation",
+  "alternative_explanation": "The teams may recover time or use a separate test environment; the records do not resolve that.",
+  "proposed_mitigation": "Ask Alpha, Bravo, and Charlie to validate the integration sequence and a fallback test slot.",
+  "pm_question": "What are the confirmed contract approval and environment-ready dates?",
+  "probability": "not estimated",
+  "executed_action": "wrote local analysis only",
+  "stop_reason": "human_review_required"
+}
