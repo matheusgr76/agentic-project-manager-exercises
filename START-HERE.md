@@ -128,6 +128,15 @@ python chapters/13-who-authorized-the-agent/example/authority_gate.py --case f
 
 Inspect `outputs/<case>/decision.json` and `outputs/audit.jsonl`. The [Chapter 13 guide](chapters/13-who-authorized-the-agent/README.md) explains the fictional actor context, action scopes, exact approvals, and untrusted source text. `SIMULATED_AUTHORIZED` means a local policy check passed; it does not execute or publish anything.
 
+### Chapter 14 — test whether the pilot paid for itself
+
+~~~text
+python chapters/14-was-it-worth-building/example/evaluator.py --scenario recorded
+python chapters/14-was-it-worth-building/example/evaluator.py --scenario counterfactual
+~~~
+
+Compare `outputs/recorded.json` and `outputs/counterfactual.json`. The [Chapter 14 guide](chapters/14-was-it-worth-building/README.md) explains the fictional paired task times, review and fallback effort, full cost, and unmeasured delivery outcome. The favorable case changes one assumption; neither file reports observed Acme performance.
+
 ## If something fails
 
 - **Python command not found:** install Python from the official page above, then open a new terminal and check python --version.
