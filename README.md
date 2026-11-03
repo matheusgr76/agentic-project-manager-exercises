@@ -1,8 +1,8 @@
-# The Agentic Project Manager — exercises through Chapter 8
+# The Agentic Project Manager — exercises through Chapter 10
 
-**New reader? [Start here](START-HERE.md).** The guide shows how to download the files and run Chapters 4–8 without writing code or connecting a company account.
+**New reader? [Start here](START-HERE.md).** The guide shows how to download the files and run Chapters 4–10 without writing code or connecting a company account.
 
-These exercises accompany the manuscript through Chapter 8. Acme and every record here are fictional. Start with the chapter you are reading. Chapters 1–3 need only a document or spreadsheet and a chatbot. Chapters 4–8 progressively build a local Report Builder, dependency agent, and Risk Analyst; no live company connection is required.
+These exercises accompany the manuscript through Chapter 10. Acme and every record here are fictional. Start with the chapter you are reading. Chapters 1–3 need only a document or spreadsheet and a chatbot. Chapters 4–10 progressively build a local Report Builder, dependency agent, Risk Analyst, coordinator, and project history; no live company connection is required.
 
 The CSV inputs are UTF-8 text and can be opened in Google Sheets or a text editor. Each worked output identifies its source records and marks added test assumptions, so readers can compare reasoning as well as formatting.
 
@@ -16,8 +16,10 @@ The CSV inputs are UTF-8 text and can be opened in Google Sheets or a text edito
 | 6 | [Scheduled reporting](chapters/06-scheduled-reporting/README.md) | [Case matrix in CSV](chapters/06-scheduled-reporting/case-matrix.csv) | [Example run log](chapters/06-scheduled-reporting/example-output.md) |
 | 7 | [Dependency agent](chapters/07-dependency-agent/README.md) | [Markdown scenarios](chapters/07-dependency-agent/example/README.md) | [Sample investigation](chapters/07-dependency-agent/example/sample-investigation.md) |
 | 8 | [Risk Analyst](chapters/08-risk-analyst/README.md) | [Fictional dated signals](chapters/08-risk-analyst/example/signals.csv) | [Sample analysis](chapters/08-risk-analyst/example/sample-analysis.md) |
+| 9 | [Coordinator](chapters/09-one-agent-is-not-enough/README.md) | [Three fictional specialist outputs](chapters/09-one-agent-is-not-enough/example/fixtures/) | [Sample handoff](chapters/09-one-agent-is-not-enough/example/sample-handoff.md) |
+| 10 | [Project history](chapters/10-project-that-remembers/README.md) | [Versioned fictional records](chapters/10-project-that-remembers/example/records.csv) | [Sample answer](chapters/10-project-that-remembers/example/sample-answer.md) |
 
-The [practice packet](acme-practice-packet/README.md) holds the shared source records and [illustrative reporting samples](acme-practice-packet/reporting-samples.md). The samples are examples to inspect, not answers to copy without checking the evidence. Each chapter guide has a copyable starter prompt. Chapters 7 and 8 include runnable Python examples and behavior tests.
+The [practice packet](acme-practice-packet/README.md) holds the shared source records and [illustrative reporting samples](acme-practice-packet/reporting-samples.md). The samples are examples to inspect, not answers to copy without checking the evidence. Each chapter guide has a copyable starter prompt. Chapters 7–10 include runnable Python examples and behavior tests.
 
 Use only fictional or otherwise approved information in an AI tool. Keep generated reports local until a person checks and approves them. The exercises do not require credentials, automatic messages, or live GitHub access.
 
