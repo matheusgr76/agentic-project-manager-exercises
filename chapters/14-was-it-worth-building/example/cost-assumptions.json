@@ -1,0 +1,10 @@
+{
+  "currency": "fictional USD",
+  "monthly_task_volume": 24,
+  "labor_value_per_hour": 60,
+  "one_time_build_cost": 2400,
+  "monthly_maintenance_cost": 180,
+  "monthly_infrastructure_cost": 60,
+  "evaluation_months": 12,
+  "counterfactual_accept_sample_id": "F-03"
+}

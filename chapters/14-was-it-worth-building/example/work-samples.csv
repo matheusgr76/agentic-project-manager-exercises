@@ -1,0 +1,7 @@
+sample_id,task,baseline_minutes,operator_minutes,review_minutes,correction_minutes,pilot_accepted,false_alert
+F-01,weekly_report,90,18,14,3,yes,no
+F-02,weekly_report,80,20,20,10,yes,no
+F-03,weekly_report,75,25,30,20,no,no
+F-04,dependency_review,45,12,10,0,yes,no
+F-05,dependency_review,55,15,20,5,yes,no
+F-06,dependency_review,50,15,30,10,yes,yes
