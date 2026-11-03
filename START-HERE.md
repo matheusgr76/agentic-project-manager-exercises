@@ -137,6 +137,18 @@ python chapters/14-was-it-worth-building/example/evaluator.py --scenario counter
 
 Compare `outputs/recorded.json` and `outputs/counterfactual.json`. The [Chapter 14 guide](chapters/14-was-it-worth-building/README.md) explains the fictional paired task times, review and fallback effort, full cost, and unmeasured delivery outcome. The favorable case changes one assumption; neither file reports observed Acme performance.
 
+### Chapter 15 — draft your first 90-day pilot
+
+~~~text
+python chapters/15-your-first-90-days/example/plan_builder.py --case a
+python chapters/15-your-first-90-days/example/plan_builder.py --case b
+python chapters/15-your-first-90-days/example/plan_builder.py --case c
+python chapters/15-your-first-90-days/example/plan_builder.py --case d
+python chapters/15-your-first-90-days/example/plan_builder.py --case e
+~~~
+
+Inspect `outputs/<case>/plan.json` and `plan.md`. The [Chapter 15 guide](chapters/15-your-first-90-days/README.md) turns a fictional bounded task into inclusive day 1–30, 31–60, and 61–90 gates. Cases B–E stop for a missing baseline, unsafe access, missing target, or missing stop rule. A generated plan is a draft for human review, not approval to connect or deploy a system.
+
 ## If something fails
 
 - **Python command not found:** install Python from the official page above, then open a new terminal and check python --version.
