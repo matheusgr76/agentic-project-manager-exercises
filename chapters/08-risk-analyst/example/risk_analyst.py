@@ -27,7 +27,10 @@ def read_signals(path: Path, scenario: str) -> List[Dict[str, str]]:
         LOGGER.error("Signal read failed: %s", error)
         raise
 
-    required = {"scenario", "id", "source", "as_of", "team", "signal", "status", "release", "dependency"}
+    required = {
+        "scenario", "id", "source", "as_of", "team", "signal",
+        "status", "release", "dependency",
+    }
     if not rows or not required.issubset(rows[0]):
         raise ValueError("Signal CSV is empty or missing required columns")
 
@@ -50,7 +53,10 @@ def validate_investigation(path: Optional[Path]) -> List[str]:
     except (OSError, json.JSONDecodeError) as error:
         LOGGER.error("Chapter 7 handoff read failed: %s", error)
         raise ValueError("Cannot read Chapter 7 investigation") from error
-    if record.get("classification") != "UNRESOLVED" or "GH-41" not in record.get("evidence_references", []):
+    if (
+        record.get("classification") != "UNRESOLVED"
+        or "GH-41" not in record.get("evidence_references", [])
+    ):
         raise ValueError("Chapter 7 handoff must be an unresolved GH-41 investigation")
     return ["GH-41", "DEC-12"]
 
@@ -69,20 +75,38 @@ def assess(rows: List[Dict[str, str]], handoff_refs: List[str]) -> Dict[str, obj
     groups: Dict[tuple[str, str], List[Dict[str, str]]] = {}
     for row in current:
         groups.setdefault((row["release"], row["dependency"]), []).append(row)
-    candidates = [group for group in groups.values() if len({row["team"] for row in group}) >= REQUIRED_TEAMS]
+    candidates = [
+        group for group in groups.values()
+        if len({row["team"] for row in group}) >= REQUIRED_TEAMS
+    ]
     evidence = candidates[0] if candidates else current
     pattern = bool(candidates)
     return {
         "assessment_date": ASSESSMENT_DATE.isoformat(),
         "classification": "EMERGING_RISK_FOR_REVIEW" if pattern else "INSUFFICIENT_EVIDENCE",
-        "risk_statement": "R1 integration and testing may miss the planned window if the v2 data contract and test environment are not ready." if pattern else None,
+        "risk_statement": (
+            "R1 integration and testing may miss the planned window if the v2 "
+            "data contract and test environment are not ready."
+        ) if pattern else None,
         "evidence_references": [row["id"] for row in evidence],
         "chapter_7_context": handoff_refs,
         "excluded_signals": excluded,
-        "evidence_quality": "three current cross-team records; dates and ownership still require confirmation" if pattern else "too few current independent open signals",
-        "alternative_explanation": "The teams may recover time or use a separate test environment; the records do not resolve that.",
-        "proposed_mitigation": "Ask Alpha, Bravo, and Charlie to validate the integration sequence and a fallback test slot." if pattern else None,
-        "pm_question": "What are the confirmed contract approval and environment-ready dates?" if pattern else "Are there newer records that change these signals?",
+        "evidence_quality": (
+            "three current cross-team records; dates and ownership still require confirmation"
+            if pattern else "too few current independent open signals"
+        ),
+        "alternative_explanation": (
+            "The teams may recover time or use a separate test environment; "
+            "the records do not resolve that."
+        ),
+        "proposed_mitigation": (
+            "Ask Alpha, Bravo, and Charlie to validate the integration sequence "
+            "and a fallback test slot."
+        ) if pattern else None,
+        "pm_question": (
+            "What are the confirmed contract approval and environment-ready dates?"
+            if pattern else "Are there newer records that change these signals?"
+        ),
         "probability": "not estimated",
         "executed_action": "wrote local analysis only",
         "stop_reason": "human_review_required" if pattern else "insufficient_evidence",
@@ -111,3 +135,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
