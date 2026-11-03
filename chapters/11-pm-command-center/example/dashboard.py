@@ -93,6 +93,7 @@ def build_model(
             ]
         ),
         "activity": component_activity(handoff),
+        "source_dates": handoff.get("source_dates", {}),
         "shared_references": handoff.get("shared_references", []),
         "publication": "none",
     }
