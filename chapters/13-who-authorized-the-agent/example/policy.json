@@ -1,0 +1,27 @@
+{
+  "version": "v1",
+  "actions": {
+    "read_view": {
+      "actor_roles": ["agent", "pm"],
+      "approval_required": false,
+      "external_effect": false
+    },
+    "draft_note": {
+      "actor_roles": ["agent", "pm"],
+      "approval_required": false,
+      "external_effect": false
+    },
+    "update_issue": {
+      "actor_roles": ["pm"],
+      "approver_roles": ["issue_owner"],
+      "approval_required": true,
+      "external_effect": true
+    },
+    "publish_report": {
+      "actor_roles": ["pm"],
+      "approver_roles": ["project_sponsor"],
+      "approval_required": true,
+      "external_effect": true
+    }
+  }
+}
