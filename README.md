@@ -1,8 +1,8 @@
-# The Agentic Project Manager — exercises through Chapter 14
+# The Agentic Project Manager — exercises through Chapter 15
 
-**New reader? [Start here](START-HERE.md).** The guide shows how to download the files and run Chapters 4–14 without writing code or connecting a company account.
+**New reader? [Start here](START-HERE.md).** The guide shows how to download the files and run Chapters 4–15 without writing code or connecting a company account.
 
-These exercises accompany the manuscript through Chapter 14. Acme and every record here are fictional. Start with the chapter you are reading. Chapters 1–3 need only a document or spreadsheet and a chatbot. Chapters 4–14 progressively build a local Report Builder, dependency agent, Risk Analyst, coordinator, project history, read-only Command Center, run gate, authority check, and pilot evaluator; no live company connection is required.
+These exercises accompany the manuscript through Chapter 15. Acme and every record here are fictional. Start with the chapter you are reading. Chapters 1–3 need only a document or spreadsheet and a chatbot. Chapters 4–15 progressively build a local Report Builder, dependency agent, Risk Analyst, coordinator, project history, read-only Command Center, run gate, authority check, pilot evaluator, and 90-day pilot plan; no live company connection is required.
 
 The CSV inputs are UTF-8 text and can be opened in Google Sheets or a text editor. Each worked output identifies its source records and marks added test assumptions, so readers can compare reasoning as well as formatting.
 
@@ -22,8 +22,9 @@ The CSV inputs are UTF-8 text and can be opened in Google Sheets or a text edito
 | 12 | [When the Agent Breaks at 2 A.M.](chapters/12-when-the-agent-breaks/README.md) | [Fictional run cases and Chapter 11 view model](chapters/12-when-the-agent-breaks/example/) | [Expected run states](chapters/12-when-the-agent-breaks/example/expected-results.md) |
 | 13 | [Who Authorized the Agent?](chapters/13-who-authorized-the-agent/README.md) | [Fictional requests, actor context, approvals, and Chapter 12 health](chapters/13-who-authorized-the-agent/example/fixtures/) | [Expected authority decisions](chapters/13-who-authorized-the-agent/example/expected-results.md) |
 | 14 | [Was It Worth Building?](chapters/14-was-it-worth-building/README.md) | [Fictional paired task and cost assumptions](chapters/14-was-it-worth-building/example/) | [Expected evaluation results](chapters/14-was-it-worth-building/example/expected-results.md) |
+| 15 | [Your First 90 Days as an Agentic PM](chapters/15-your-first-90-days/README.md) | [Fictional pilot charters and Chapter 14 value context](chapters/15-your-first-90-days/example/fixtures/) | [Sample 90-day plan](chapters/15-your-first-90-days/example/sample-plan.md) |
 
-The [practice packet](acme-practice-packet/README.md) holds the shared source records and [illustrative reporting samples](acme-practice-packet/reporting-samples.md). The samples are examples to inspect, not answers to copy without checking the evidence. Each chapter guide has a copyable starter prompt. Chapters 7–14 include runnable Python examples and behavior tests.
+The [practice packet](acme-practice-packet/README.md) holds the shared source records and [illustrative reporting samples](acme-practice-packet/reporting-samples.md). The samples are examples to inspect, not answers to copy without checking the evidence. Each chapter guide has a copyable starter prompt. Chapters 7–15 include runnable Python examples and behavior tests.
 
 Use only fictional or otherwise approved information in an AI tool. Keep generated reports local until a person checks and approves them. The exercises do not require credentials, automatic messages, or live GitHub access.
 
