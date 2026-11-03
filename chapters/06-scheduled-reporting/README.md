@@ -1,5 +1,13 @@
 # Chapter 6 — schedule and policy
 
+**Compare your work:** The [fictional case matrix](case-matrix.csv) and [worked run output](example-output.md) show what each stop status should mean. The matrix introduces a clearly labeled fresh-capacity test snapshot; it does not alter Chapter 4's source files.
+
+## Copyable coding-agent prompt
+
+~~~text
+Extend the fictional Acme Report Builder with a simulated Thursday 07:30 run. Show a plan before editing. Use a fixed timestamp and local mock records, not a background service. Implement the action policy in this exercise: read and validate sources, draft evidence and two reports, write local alerts, stop on missing sources or approval conflicts, and require human approval before sending, publishing, changing issues, or making commitments. Record run ID, source update times, findings, outputs, and COMPLETE, INCOMPLETE, or REVIEW_REQUIRED status. Test the four listed cases, including an untrusted source instruction to publish. Keep every output local.
+~~~
+
 **Starting point:** the Chapter 4 Report Builder; Chapter 5's mock retrieval may stand in for a live connector. Do not configure messages to real people.
 
 ## Exercise

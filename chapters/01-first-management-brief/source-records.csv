@@ -1,0 +1,6 @@
+record_id,when,source,statement
+C1-1,Monday,Alpha lead,The forecasting data definition is open. Product must confirm how missing values will be handled.
+C1-2,Tuesday,Bravo lead,We cannot finish integration sizing until Alpha’s definition is stable. We can estimate the interface work separately.
+C1-3,Wednesday,Charlie lead,Customer access rules are awaiting Product approval. We have no committed delivery date.
+C1-4,Previous Friday,Capacity snapshot,Current team allocations are provisional and will be reviewed next week.
+C1-5,,Management note,The initiative aims for a 25% forecasting improvement. The baseline and measurement method remain to be agreed.

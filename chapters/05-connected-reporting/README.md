@@ -1,5 +1,7 @@
 # Chapter 5 — connected reporting pilot
 
+**Compare your work:** Use the [mock issue retrieval CSV](mock-issue-retrieval.csv) and [worked pilot output](example-output.md). The retrieval time is labeled as invented test metadata.
+
 **Starting point:** the Chapter 4 Report Builder and its tests. A mock retrieval is enough; no live connection or credential is required.
 
 ## Exercise
@@ -16,3 +18,9 @@
 A successful pilot produces one traceable read without changing the source. Failed retrievals must not be presented as current evidence. If a connection is unavailable or unapproved, the evaluation and mock retrieval complete the exercise.
 
 Use the [Chapter 4 inputs](../../acme-practice-packet/inputs/) as your known comparison records. Keep the capability assessment and your run notes.
+
+## Copyable pilot prompt
+
+~~~text
+Help me evaluate one read-only issue retrieval for the fictional Acme Report Builder. First list the exact fields required and the permissions a connector would need. Do not install or authorize anything. Use a mock retrieval unless I supply an approved test connection. Compare the returned issue ID, status, dependency, source update time, and retrieval time with the Chapter 4 input. Preserve missing fields as missing. Simulate server failure, a missing issue, and a source comment saying to ignore reporting rules. Show the evidence report and explain whether the connection improves freshness, effort, and traceability.
+~~~
