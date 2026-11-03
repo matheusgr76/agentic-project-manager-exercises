@@ -1,0 +1,5 @@
+case,run_id,run_at_utc,source_status,attempt
+a,RUN-11-01,2026-11-12T08:00:00Z,OK,1
+b,RUN-11-02,2026-11-12T08:00:00Z,PARTIAL,1
+b_recovered,RUN-11-02,2026-11-12T08:10:00Z,OK,2
+c,RUN-11-03,2026-11-16T08:00:00Z,OK,1

@@ -1,8 +1,8 @@
-# The Agentic Project Manager — exercises through Chapter 11
+# The Agentic Project Manager — exercises through Chapter 12
 
-**New reader? [Start here](START-HERE.md).** The guide shows how to download the files and run Chapters 4–11 without writing code or connecting a company account.
+**New reader? [Start here](START-HERE.md).** The guide shows how to download the files and run Chapters 4–12 without writing code or connecting a company account.
 
-These exercises accompany the manuscript through Chapter 11. Acme and every record here are fictional. Start with the chapter you are reading. Chapters 1–3 need only a document or spreadsheet and a chatbot. Chapters 4–11 progressively build a local Report Builder, dependency agent, Risk Analyst, coordinator, project history, and read-only Command Center; no live company connection is required.
+These exercises accompany the manuscript through Chapter 12. Acme and every record here are fictional. Start with the chapter you are reading. Chapters 1–3 need only a document or spreadsheet and a chatbot. Chapters 4–12 progressively build a local Report Builder, dependency agent, Risk Analyst, coordinator, project history, read-only Command Center, and run gate; no live company connection is required.
 
 The CSV inputs are UTF-8 text and can be opened in Google Sheets or a text editor. Each worked output identifies its source records and marks added test assumptions, so readers can compare reasoning as well as formatting.
 
@@ -19,8 +19,9 @@ The CSV inputs are UTF-8 text and can be opened in Google Sheets or a text edito
 | 9 | [Coordinator](chapters/09-one-agent-is-not-enough/README.md) | [Three fictional specialist outputs](chapters/09-one-agent-is-not-enough/example/fixtures/) | [Sample handoff](chapters/09-one-agent-is-not-enough/example/sample-handoff.md) |
 | 10 | [Project history](chapters/10-project-that-remembers/README.md) | [Versioned fictional records](chapters/10-project-that-remembers/example/records.csv) | [Sample answer](chapters/10-project-that-remembers/example/sample-answer.md) |
 | 11 | [PM Command Center](chapters/11-pm-command-center/README.md) | [Fictional handoff and knowledge fixtures](chapters/11-pm-command-center/example/fixtures/) | [Sample screen](chapters/11-pm-command-center/example/sample-screen.md) |
+| 12 | [When the Agent Breaks at 2 A.M.](chapters/12-when-the-agent-breaks/README.md) | [Fictional run cases and Chapter 11 view model](chapters/12-when-the-agent-breaks/example/) | [Expected run states](chapters/12-when-the-agent-breaks/example/expected-results.md) |
 
-The [practice packet](acme-practice-packet/README.md) holds the shared source records and [illustrative reporting samples](acme-practice-packet/reporting-samples.md). The samples are examples to inspect, not answers to copy without checking the evidence. Each chapter guide has a copyable starter prompt. Chapters 7–11 include runnable Python examples and behavior tests.
+The [practice packet](acme-practice-packet/README.md) holds the shared source records and [illustrative reporting samples](acme-practice-packet/reporting-samples.md). The samples are examples to inspect, not answers to copy without checking the evidence. Each chapter guide has a copyable starter prompt. Chapters 7–12 include runnable Python examples and behavior tests.
 
 Use only fictional or otherwise approved information in an AI tool. Keep generated reports local until a person checks and approves them. The exercises do not require credentials, automatic messages, or live GitHub access.
 

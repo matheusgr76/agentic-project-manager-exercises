@@ -103,6 +103,18 @@ python chapters/11-pm-command-center/example/dashboard.py --scenario c
 
 Open chapters/11-pm-command-center/example/outputs/a/index.html in a browser. The [Chapter 11 guide](chapters/11-pm-command-center/README.md) explains how the read-only local page separates recorded positions, risk hypotheses, source dates, and human review. Scenario B shows a conflict; C shows an incomplete handoff. No command sends, approves, or publishes anything.
 
+### Chapter 12 — stop, recover, and avoid duplicate success
+
+~~~text
+python chapters/12-when-the-agent-breaks/example/health_monitor.py --case a
+python chapters/12-when-the-agent-breaks/example/health_monitor.py --case a
+python chapters/12-when-the-agent-breaks/example/health_monitor.py --case b
+python chapters/12-when-the-agent-breaks/example/health_monitor.py --case b_recovered
+python chapters/12-when-the-agent-breaks/example/health_monitor.py --case c
+~~~
+
+Inspect `outputs/<case>/health.json`, `outputs/attempts.jsonl`, and `outputs/ledger.json`. The [Chapter 12 guide](chapters/12-when-the-agent-breaks/README.md) explains the fictional partial retrieval, bounded retry, stale source, and replay check. The gate leaves every passing view for PM review; it does not publish it.
+
 ## If something fails
 
 - **Python command not found:** install Python from the official page above, then open a new terminal and check python --version.
