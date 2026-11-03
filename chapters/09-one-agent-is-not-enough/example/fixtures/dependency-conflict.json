@@ -1,0 +1,7 @@
+{
+  "exception_id": "GH-41",
+  "classification": "RESOLVED",
+  "evidence_references": ["GH-41", "DEC-12"],
+  "stop_reason": "evidence_reviewed",
+  "note": "Invented contradiction test. No approval record is supplied."
+}
