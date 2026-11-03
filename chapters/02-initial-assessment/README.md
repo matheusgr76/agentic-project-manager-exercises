@@ -1,5 +1,7 @@
 # Chapter 2 — initial assessment and after-action review
 
+**Compare your work:** The [CSV packet](source-records.csv) separates initial Records A–H, variation I, and after-action Records J–N. Read the [worked example](example-output.md) after drafting your own response.
+
 **Tools:** a document editor and a chatbot. Allow about 30–45 minutes for the initial assessment.
 
 ## Initial assessment

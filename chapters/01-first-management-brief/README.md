@@ -1,5 +1,7 @@
 # Chapter 1 — first management brief
 
+**Compare your work:** Use the [five records in CSV](source-records.csv), then inspect the [worked example](example-output.md) only after making your own assessment.
+
 **Tools:** a document and an ordinary chatbot. No code or GitHub access is needed.
 
 ## Start

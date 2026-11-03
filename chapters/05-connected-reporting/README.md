@@ -1,5 +1,7 @@
 # Chapter 5 — connected reporting pilot
 
+**Compare your work:** Use the [mock issue retrieval CSV](mock-issue-retrieval.csv) and [worked pilot output](example-output.md). The retrieval time is labeled as invented test metadata.
+
 **Starting point:** the Chapter 4 Report Builder and its tests. A mock retrieval is enough; no live connection or credential is required.
 
 ## Exercise

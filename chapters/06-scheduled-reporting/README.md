@@ -1,5 +1,7 @@
 # Chapter 6 — schedule and policy
 
+**Compare your work:** The [fictional case matrix](case-matrix.csv) and [worked run output](example-output.md) show what each stop status should mean. The matrix introduces a clearly labeled fresh-capacity test snapshot; it does not alter Chapter 4's source files.
+
 ## Copyable coding-agent prompt
 
 ~~~text

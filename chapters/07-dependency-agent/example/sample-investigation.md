@@ -4,7 +4,7 @@ This is a reader-facing rendering of the local JSON output. It is an illustrativ
 
 **Exception:** GH-41 depends on DEC-12.
 
-**Evidence consulted:** GH-41 issue, DEC-12 decision, UP-1 team update. Three retrieval calls were used.
+**Evidence consulted:** [GH-41 issue](scenarios/a/issue-GH-41.md), [DEC-12 decision](scenarios/a/decision-DEC-12.md), and [UP-1 team update](scenarios/a/update-UP-1.md). Three retrieval calls were used.
 
 **Confirmed findings:**
 

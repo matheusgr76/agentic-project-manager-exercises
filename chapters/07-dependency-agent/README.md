@@ -4,6 +4,8 @@
 
 **Want to see it work first?** Open the [runnable Python example](example/README.md). It includes a sample [agent policy](example/agent-policy.md), [runtime prompt for a model-assisted version](example/investigation-prompt.md), Markdown issue/decision/update records, three scenarios, expected outputs, and tests. Run it locally, inspect the trace, then build your own version using the steps below.
 
+**Compare your work:** The [sample Scenario A investigation](example/sample-investigation.md) shows a reader-facing output, and the [expected-results guide](example/expected-results.md) covers all three runs. Make your own assessment before opening either.
+
 ## Exercise
 
 1. Write `agent-policy.md`. Define the investigation goal; permitted reads and local exception-register updates; prohibited source changes, issue closure, decision approval, messages, and commitments; a maximum of **six retrieval calls**; and stop conditions for insufficient evidence, limit reached, or required human authorization.

@@ -1,5 +1,7 @@
 # Chapter 3 — map the information flow
 
+**Compare your work:** Use [Records 1–6 in CSV](source-records.csv), then compare your source map and two reports with the [worked example](example-output.md).
+
 **Tools:** a spreadsheet or text document and a chatbot. No integration or programming is needed.
 
 ## Exercise

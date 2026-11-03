@@ -1,5 +1,7 @@
 # Chapter 4 — build the local Acme Report Builder
 
+**Compare your work:** After running your own program on the shared CSV inputs, compare its findings and weekly draft with this [worked output](example-output.md). Wording can differ; evidence and boundaries should agree.
+
 **Tools:** a local folder, Python or another language you can run, and a coding agent such as Codex. This chapter asks you to build the program; the packet supplies the starter data rather than a completed implementation.
 
 ## Starter inputs

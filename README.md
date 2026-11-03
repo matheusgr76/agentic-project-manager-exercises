@@ -2,15 +2,17 @@
 
 These exercises accompany the manuscript through Chapter 7. Acme and every record here are fictional. Start with the chapter you are reading. Chapters 1–3 need only a document or spreadsheet and a chatbot. Chapters 4–7 progressively build a local Report Builder and dependency agent; no live company connection is required.
 
-| Chapter | Exercise | Starting point |
-| --- | --- | --- |
-| 1 | [First management brief](chapters/01-first-management-brief/README.md) | Five short records |
-| 2 | [Initial assessment and after-action review](chapters/02-initial-assessment/README.md) | Records A–N |
-| 3 | [Information flow and two reports](chapters/03-information-flow/README.md) | Records 1–6 |
-| 4 | [Local Report Builder](chapters/04-report-builder/README.md) | CSV and update files |
-| 5 | [Connected reporting pilot](chapters/05-connected-reporting/README.md) | Chapter 4 tool and mock retrieval |
-| 6 | [Scheduled reporting](chapters/06-scheduled-reporting/README.md) | Chapter 4 tool and policy |
-| 7 | [Dependency agent](chapters/07-dependency-agent/README.md) | Chapter 6 workflow and later scenario |
+The CSV inputs are UTF-8 text and can be opened in Google Sheets or a text editor. Each worked output identifies its source records and marks added test assumptions, so readers can compare reasoning as well as formatting.
+
+| Chapter | Exercise | Starting point | Worked output |
+| --- | --- | --- | --- |
+| 1 | [First management brief](chapters/01-first-management-brief/README.md) | [Five records in CSV](chapters/01-first-management-brief/source-records.csv) | [Example brief](chapters/01-first-management-brief/example-output.md) |
+| 2 | [Initial assessment and after-action review](chapters/02-initial-assessment/README.md) | [Records A–N in CSV](chapters/02-initial-assessment/source-records.csv) | [Example assessment](chapters/02-initial-assessment/example-output.md) |
+| 3 | [Information flow and two reports](chapters/03-information-flow/README.md) | [Records 1–6 in CSV](chapters/03-information-flow/source-records.csv) | [Example map and reports](chapters/03-information-flow/example-output.md) |
+| 4 | [Local Report Builder](chapters/04-report-builder/README.md) | [CSV and update files](acme-practice-packet/inputs/) | [Example evidence sheet](chapters/04-report-builder/example-output.md) |
+| 5 | [Connected reporting pilot](chapters/05-connected-reporting/README.md) | [Mock retrieval in CSV](chapters/05-connected-reporting/mock-issue-retrieval.csv) | [Example pilot result](chapters/05-connected-reporting/example-output.md) |
+| 6 | [Scheduled reporting](chapters/06-scheduled-reporting/README.md) | [Case matrix in CSV](chapters/06-scheduled-reporting/case-matrix.csv) | [Example run log](chapters/06-scheduled-reporting/example-output.md) |
+| 7 | [Dependency agent](chapters/07-dependency-agent/README.md) | [Markdown scenarios](chapters/07-dependency-agent/example/README.md) | [Sample investigation](chapters/07-dependency-agent/example/sample-investigation.md) |
 
 The [practice packet](acme-practice-packet/README.md) holds the shared source records and [illustrative reporting samples](acme-practice-packet/reporting-samples.md). The samples are examples to inspect, not answers to copy without checking the evidence. Each chapter guide has a copyable starter prompt. Chapter 7 also has a [runnable Python agent example](chapters/07-dependency-agent/example/README.md) with Markdown source records and behavior tests.
 
