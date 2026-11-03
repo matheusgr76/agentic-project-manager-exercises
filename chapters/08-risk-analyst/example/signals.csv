@@ -1,0 +1,9 @@
+scenario,id,source,as_of,team,signal,status,release,dependency
+a,S-01,Alpha update,2026-11-09,Alpha,Data contract delivery moved from Nov 10 to Nov 12,OPEN,R1,DEC-12
+a,S-02,Bravo issue GH-41,2026-11-09,Bravo,Integration needs approved v2 contract before Nov 13,OPEN,R1,DEC-12
+a,S-03,Charlie test plan,2026-11-09,Charlie,Shared test environment unavailable until Nov 16,OPEN,R1,DEC-12
+b,S-04,Alpha update,2026-11-09,Alpha,Data contract delivery moved from Nov 10 to Nov 12,RESOLVED,R1,DEC-12
+b,S-05,Bravo issue GH-41,2026-11-09,Bravo,Integration needs approved v2 contract before Nov 13,OPEN,R1,DEC-12
+b,S-06,Charlie test plan,2026-11-09,Charlie,Test environment ready for Nov 13,RESOLVED,R1,DEC-12
+c,S-07,Alpha update,2026-10-23,Alpha,Data contract delivery may move,OPEN,R1,DEC-12
+c,S-08,Bravo issue GH-41,2026-11-09,Bravo,Integration needs approved v2 contract before Nov 13,OPEN,R1,DEC-12
