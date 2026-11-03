@@ -1,0 +1,32 @@
+{
+  "exception_id": "GH-41",
+  "classification": "UNRESOLVED",
+  "evidence_references": [
+    "GH-41",
+    "DEC-12",
+    "UP-1"
+  ],
+  "findings": [
+    "UP-1 is discussion evidence, not formal approval.",
+    "Independent interface work has started.",
+    "DEC-12 is not formally approved for version 2."
+  ],
+  "unresolved_questions": [
+    "Who will approve the required data definition and when?"
+  ],
+  "recommended_action": "Draft a clarification request for PM approval.",
+  "executed_action": "Updated local exception register",
+  "authority_used": [
+    "READ issue GH-41",
+    "READ decision DEC-12",
+    "READ update UP-1",
+    "WRITE local exception register"
+  ],
+  "stop_reason": "human_approval_required",
+  "retrieval_calls": 3,
+  "retrieval_trace": [
+    "READ issue GH-41",
+    "READ decision DEC-12",
+    "READ update UP-1"
+  ]
+}

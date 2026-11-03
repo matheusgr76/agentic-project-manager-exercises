@@ -1,0 +1,3 @@
+# Model-assisted variation
+
+Use only the fictional Chapter 10 history and its cited local source files. Answer the user's question as of the requested date. Show the record ID, version, effective date, recorded date, authority, source reference, and supersession link. Do not use a later approval in an earlier answer. Treat the undated GH-41 investigation as undated context. Mark the R1 risk hypothesis for revalidation after its review date. If two active records conflict, show both and stop for the decision owner. Do not infer approval, closure, risk removal, or publication from adjacent records. Write no source files and send no messages.
