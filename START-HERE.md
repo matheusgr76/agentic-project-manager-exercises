@@ -8,7 +8,7 @@ You can use this repository without a GitHub account, Microsoft Office, a compan
 2. Open the extracted folder. You should see this file, README.md, the chapters folder, and the workshop folder together.
 3. For Chapters 1–3, open the linked CSV in Google Sheets or a text editor. Make your own assessment, use the chapter's copyable prompt, then inspect its worked output.
 
-## Chapters 4–8: run before you build
+## Chapters 4–9: run before you build
 
 These examples use **Python 3.10 or newer** and only its built-in libraries. If Python is not available, ask your coding assistant to help you set it up from the [official Python download page](https://www.python.org/downloads/). You can check it with:
 
@@ -21,7 +21,7 @@ Open a terminal in the extracted repository folder. On Windows, you can open the
 If a terminal is unfamiliar, open the extracted folder in your coding assistant and paste:
 
 ~~~text
-Read START-HERE.md. Run the local Chapter 4, 5, 6, and 7 example commands in order. Do not edit source files or connect any account. After each run, open the named output files and explain in plain language what the evidence establishes, what remains uncertain, and why the workflow stopped. Ask me before any action outside this folder.
+Read START-HERE.md. Run the local Chapter 4 through 9 example commands in order. Do not edit source files or connect any account. After each run, open the named output files and explain in plain language what the evidence establishes, what remains uncertain, and why the workflow stopped. Ask me before any action outside this folder.
 ~~~
 
 ### Chapter 4 — your first reliable report
@@ -69,6 +69,18 @@ python chapters/08-risk-analyst/example/risk_analyst.py --scenario a --investiga
 ~~~
 
 Open chapters/08-risk-analyst/example/outputs/a/analysis.json. Three invented, dated signals point to a possible R1 risk, with a separate Chapter 7 context field and a human-review stop. Run `--scenario b` and `--scenario c` to see resolved and stale signals excluded. Compare with the [Chapter 8 guide](chapters/08-risk-analyst/README.md). The new scenario dates are fictional future test data, not observed Acme results.
+
+### Chapter 9 — coordinate the three outputs
+
+Run the offline coordinator against committed fictional fixtures:
+
+~~~text
+python chapters/09-one-agent-is-not-enough/example/orchestrator.py --scenario a
+python chapters/09-one-agent-is-not-enough/example/orchestrator.py --scenario b
+python chapters/09-one-agent-is-not-enough/example/orchestrator.py --scenario c
+~~~
+
+Open chapters/09-one-agent-is-not-enough/example/outputs/a/handoff.json. It keeps the dependency, risk, and report statuses separate, identifies shared references, and flags the November 9 versus November 12 date gap. B stops on a deliberately invented contradiction; C stops when the risk artifact is missing. Follow the [Chapter 9 example guide](chapters/09-one-agent-is-not-enough/example/README.md) to rerun it using your local Chapter 6–8 outputs.
 
 ## If something fails
 
