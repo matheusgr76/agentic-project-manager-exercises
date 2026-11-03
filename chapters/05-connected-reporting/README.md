@@ -1,5 +1,7 @@
 # Chapter 5 — connected reporting pilot
 
+**First run, no connection:** Follow [Start Here](../../START-HERE.md#chapter-5--a-mock-connected-read) to run the [mock retrieval example](../../workshop/README.md). It uses the Chapter 4 validator, shows the retrieved source time separately, and makes failure visible. No MCP server or credentials are involved.
+
 **Compare your work:** Use the [mock issue retrieval CSV](mock-issue-retrieval.csv) and [worked pilot output](example-output.md). The retrieval time is labeled as invented test metadata.
 
 **Starting point:** the Chapter 4 Report Builder and its tests. A mock retrieval is enough; no live connection or credential is required.

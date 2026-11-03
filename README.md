@@ -1,5 +1,7 @@
 # The Agentic Project Manager — exercises through Chapter 7
 
+**New reader? [Start here](START-HERE.md).** The guide shows how to download the files and run Chapters 4–7 without writing code or connecting a company account.
+
 These exercises accompany the manuscript through Chapter 7. Acme and every record here are fictional. Start with the chapter you are reading. Chapters 1–3 need only a document or spreadsheet and a chatbot. Chapters 4–7 progressively build a local Report Builder and dependency agent; no live company connection is required.
 
 The CSV inputs are UTF-8 text and can be opened in Google Sheets or a text editor. Each worked output identifies its source records and marks added test assumptions, so readers can compare reasoning as well as formatting.

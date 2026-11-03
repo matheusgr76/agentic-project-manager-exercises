@@ -2,6 +2,8 @@
 
 This small Python program shows a bounded dependency investigation end to end. It reads only local fictional Markdown records. It can update only a local JSON exception register. It has no network or messaging code and needs no package installation.
 
+To continue from the same Chapter 4–6 workshop, use the [Chapter 7 handoff](../../../START-HERE.md#chapter-7--investigate-the-chapter-6-exception). The command below also works when you want to study this agent on its own.
+
 ## Run it
 
 From this directory, with Python 3.10 or newer:

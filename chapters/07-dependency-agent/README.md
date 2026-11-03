@@ -1,5 +1,7 @@
 # Chapter 7 — build the Acme Dependency Agent
 
+**Continue the same path:** Run Chapter 6 case C, then follow the [Chapter 7 handoff command](../../START-HERE.md#chapter-7--investigate-the-chapter-6-exception). The agent reads the resulting exception file and investigates the matching fictional Markdown records.
+
 **Starting point:** the Chapter 4 Report Builder and Chapter 6 workflow. Use only mock tools or local fictional files. This chapter asks you to implement the agent; it does not provide a finished agent.
 
 **Want to see it work first?** Open the [runnable Python example](example/README.md). It includes a sample [agent policy](example/agent-policy.md), [runtime prompt for a model-assisted version](example/investigation-prompt.md), Markdown issue/decision/update records, three scenarios, expected outputs, and tests. Run it locally, inspect the trace, then build your own version using the steps below.
