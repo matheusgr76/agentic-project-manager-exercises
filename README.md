@@ -12,7 +12,7 @@ These exercises accompany the manuscript through Chapter 7. Acme and every recor
 | 6 | [Scheduled reporting](chapters/06-scheduled-reporting/README.md) | Chapter 4 tool and policy |
 | 7 | [Dependency agent](chapters/07-dependency-agent/README.md) | Chapter 6 workflow and later scenario |
 
-The [practice packet](acme-practice-packet/README.md) holds the shared source records and [illustrative reporting samples](acme-practice-packet/reporting-samples.md). The samples are examples to inspect, not answers to copy without checking the evidence.
+The [practice packet](acme-practice-packet/README.md) holds the shared source records and [illustrative reporting samples](acme-practice-packet/reporting-samples.md). The samples are examples to inspect, not answers to copy without checking the evidence. Each chapter guide has a copyable starter prompt. Chapter 7 also has a [runnable Python agent example](chapters/07-dependency-agent/example/README.md) with Markdown source records and behavior tests.
 
 Use only fictional or otherwise approved information in an AI tool. Keep generated reports local until a person checks and approves them. The exercises do not require credentials, automatic messages, or live GitHub access.
 
