@@ -1,0 +1,53 @@
+{
+  "scenario": "b",
+  "as_of": "2026-11-12",
+  "answers": {
+    "DEC-12/v2": {
+      "key": "DEC-12/v2",
+      "status": "CURRENT",
+      "value": "PENDING",
+      "effective_at": "2026-11-05",
+      "recorded_at": "2026-11-05",
+      "review_by": null,
+      "authority": "decision_log",
+      "sources": [
+        {
+          "event_id": "E-01",
+          "source_ref": "acme-practice-packet/inputs/decisions.csv"
+        }
+      ],
+      "superseded_events": []
+    },
+    "GH-41": {
+      "key": "GH-41",
+      "status": "UNDATED_CONTEXT",
+      "value": null,
+      "sources": [
+        {
+          "event_id": "E-02",
+          "source_ref": "chapters/07-dependency-agent/example/expected-results.md"
+        }
+      ],
+      "note": "Source has no effective or recorded date; no as-of claim is made."
+    },
+    "R1/risk": {
+      "key": "R1/risk",
+      "status": "CURRENT",
+      "value": "HYPOTHESIS",
+      "effective_at": "2026-11-09",
+      "recorded_at": "2026-11-09",
+      "review_by": "2026-11-12",
+      "authority": "risk_analysis",
+      "sources": [
+        {
+          "event_id": "E-03",
+          "source_ref": "chapters/09-one-agent-is-not-enough/example/fixtures/risk-a.json"
+        }
+      ],
+      "superseded_events": []
+    }
+  },
+  "decision_owner": "Acme PM and named decision approver",
+  "executed_action": "local knowledge answer only",
+  "publication": "none"
+}

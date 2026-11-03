@@ -1,0 +1,13 @@
+{
+  "case": "c",
+  "run_id": "RUN-11-03",
+  "attempt": 1,
+  "run_at_utc": "2026-11-16T08:00:00Z",
+  "source_status": "OK",
+  "risk_source_date": "2026-11-09",
+  "risk_age_days": 7,
+  "state": "BLOCKED_STALE",
+  "reason": "Risk source exceeds allowed age",
+  "model_sha256": "dd3dc6083f7063ace6652951e3e923b527afb3c7059a5bdfb5918754d166af93",
+  "publication": "none"
+}

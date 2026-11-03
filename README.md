@@ -30,6 +30,8 @@ Use only fictional or otherwise approved information in an AI tool. Keep generat
 
 ## How to use this repository
 
+Want to see results before running anything? Real outputs for every chapter are in [sample-outputs](sample-outputs/README.md).
+
 1. Read the relevant chapter and its exercise README.
 2. Make your own assessment before using an assistant.
 3. Use the linked packet snapshot. Do not combine records from different snapshots as though they were simultaneous.

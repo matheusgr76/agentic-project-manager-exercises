@@ -1,0 +1,87 @@
+{
+  "report_date": "2026-11-12",
+  "issue": {
+    "id": "GH-41",
+    "title": "Bravo integration sizing",
+    "status": "IN_PROGRESS",
+    "owner": "Bravo",
+    "updated_at": "2026-11-12",
+    "dependency": "DEC-12"
+  },
+  "independent_issue": {
+    "id": "GH-42",
+    "title": "Independent interface sizing",
+    "status": "IN_PROGRESS",
+    "owner": "Bravo",
+    "updated_at": "2026-11-05",
+    "dependency": ""
+  },
+  "data_contract_issue": {
+    "id": "GH-43",
+    "title": "Alpha data contract",
+    "status": "IN_PROGRESS",
+    "owner": "Alpha",
+    "updated_at": "2026-11-05",
+    "dependency": "DEC-12"
+  },
+  "decision": {
+    "id": "DEC-12",
+    "subject": "Missing-value definition",
+    "status": "PENDING",
+    "approver": "",
+    "effective_date": "",
+    "version": "v2"
+  },
+  "scope_decision": {
+    "id": "DEC-13",
+    "subject": "Proof-of-concept scope",
+    "status": "APPROVED",
+    "approver": "Product Manager",
+    "effective_date": "2026-11-04",
+    "version": "v1"
+  },
+  "formal_approval": false,
+  "capacity": [
+    {
+      "team": "Alpha",
+      "allocation": "2",
+      "status": "CONFIRMED",
+      "snapshot_date": "2026-11-12",
+      "age_days": 0,
+      "stale": false,
+      "source": "workshop/fixtures/current-capacity.csv"
+    },
+    {
+      "team": "Bravo",
+      "allocation": "2",
+      "status": "CONFIRMED",
+      "snapshot_date": "2026-11-12",
+      "age_days": 0,
+      "stale": false,
+      "source": "workshop/fixtures/current-capacity.csv"
+    },
+    {
+      "team": "Charlie",
+      "allocation": "1",
+      "status": "CONFIRMED",
+      "snapshot_date": "2026-11-12",
+      "age_days": 0,
+      "stale": false,
+      "source": "workshop/fixtures/current-capacity.csv"
+    }
+  ],
+  "source_references": [
+    "GH-41",
+    "GH-42",
+    "GH-43",
+    "DEC-12",
+    "DEC-13",
+    "UP-1",
+    "UP-2",
+    "UP-3"
+  ],
+  "unsupported_claims": [
+    "delivery date",
+    "achieved 25% improvement"
+  ]
+}

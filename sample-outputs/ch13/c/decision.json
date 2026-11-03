@@ -1,0 +1,14 @@
+{
+  "request_id": "REQ-13-03",
+  "action": "publish_report",
+  "target": "weekly-status",
+  "actor_role": "pm",
+  "identity_source": "fictional trusted context",
+  "source_id": "RUN-11-01",
+  "approval_id": "APP-13-01",
+  "policy_version": "v1",
+  "state": "SIMULATED_AUTHORIZED",
+  "reason": "All local checks passed; no action executed",
+  "execution": "none",
+  "publication": "none"
+}

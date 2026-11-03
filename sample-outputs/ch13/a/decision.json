@@ -1,0 +1,14 @@
+{
+  "request_id": "REQ-13-01",
+  "action": "read_view",
+  "target": "command-center",
+  "actor_role": "agent",
+  "identity_source": "fictional trusted context",
+  "source_id": "RUN-11-01",
+  "approval_id": "",
+  "policy_version": "v1",
+  "state": "LOCAL_ALLOWED",
+  "reason": "Local read or draft check passed; no action executed",
+  "execution": "none",
+  "publication": "none"
+}

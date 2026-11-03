@@ -1,0 +1,18 @@
+{
+  "case": "B",
+  "run_at_utc": "2026-11-12T07:30:00Z",
+  "status": "INCOMPLETE",
+  "publication": "PM approval required; nothing sent",
+  "source_inventory": {
+    "github_issue": "failed",
+    "decision": "not read",
+    "capacity_fixture": "not read",
+    "capacity_snapshot_date": null
+  },
+  "findings": [
+    "Required GitHub issue retrieval failed."
+  ],
+  "artifacts": [
+    "alert.md"
+  ]
+}

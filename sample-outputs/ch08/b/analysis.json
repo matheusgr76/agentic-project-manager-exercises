@@ -1,0 +1,29 @@
+{
+  "assessment_date": "2026-11-09",
+  "classification": "INSUFFICIENT_EVIDENCE",
+  "risk_statement": null,
+  "evidence_references": [
+    "S-05"
+  ],
+  "chapter_7_context": [
+    "GH-41",
+    "DEC-12"
+  ],
+  "excluded_signals": [
+    {
+      "id": "S-04",
+      "reason": "resolved or outside seven-day window"
+    },
+    {
+      "id": "S-06",
+      "reason": "resolved or outside seven-day window"
+    }
+  ],
+  "evidence_quality": "too few current independent open signals",
+  "alternative_explanation": "The teams may recover time or use a separate test environment; the records do not resolve that.",
+  "proposed_mitigation": null,
+  "pm_question": "Are there newer records that change these signals?",
+  "probability": "not estimated",
+  "executed_action": "wrote local analysis only",
+  "stop_reason": "insufficient_evidence"
+}

@@ -1,0 +1,50 @@
+{
+  "state": "INCOMPLETE",
+  "as_of": "2026-11-12",
+  "alerts": [
+    "Required specialist output is missing; do not treat this as a complete view."
+  ],
+  "facts": [
+    {
+      "label": "Decision DEC-12/v2",
+      "value": "PENDING",
+      "quality": "CURRENT",
+      "sources": [
+        "E-01: acme-practice-packet/inputs/decisions.csv"
+      ]
+    },
+    {
+      "label": "GH-41 investigation",
+      "value": "UNDATED_CONTEXT",
+      "quality": "No dated as-of claim",
+      "sources": [
+        "E-02: chapters/07-dependency-agent/example/expected-results.md"
+      ]
+    },
+    {
+      "label": "Reporting run",
+      "value": "Unavailable",
+      "quality": "Date unavailable",
+      "sources": [
+        "Chapter 9 coordinator handoff"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "label": "R1 release risk",
+      "value": "HYPOTHESIS",
+      "quality": "Hypothesis; review state CURRENT",
+      "sources": [
+        "E-03: chapters/09-one-agent-is-not-enough/example/fixtures/risk-a.json"
+      ]
+    }
+  ],
+  "human_review": [
+    "Reconcile missing or conflicting records before acting"
+  ],
+  "activity": {},
+  "source_dates": {},
+  "shared_references": [],
+  "publication": "none"
+}

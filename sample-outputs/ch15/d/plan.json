@@ -1,0 +1,58 @@
+{
+  "pilot_id": "ACME-90-04",
+  "state": "PLAN_BLOCKED",
+  "blocking_gaps": [
+    "TARGET_MISSING"
+  ],
+  "owner": "Acme PM",
+  "problem": "Prepare a source-backed weekly status draft",
+  "scope": "Local draft from approved reporting records",
+  "baseline": {
+    "sample_count": 8,
+    "median_total_minutes": 75,
+    "status": "fictional planning assumption"
+  },
+  "target": {
+    "sample_count": 0,
+    "min_accepted": 0,
+    "max_median_total_minutes": null
+  },
+  "stop_conditions": [
+    "missing source date",
+    "decision conflict",
+    "unapproved action request"
+  ],
+  "phases": [
+    {
+      "name": "Days 1\u201330",
+      "start_date": "2026-11-16",
+      "end_date": "2026-12-15",
+      "focus": "Choose one bounded task and measure a manual baseline",
+      "exit_evidence": "Owner, source, baseline records, and accepted-output rule"
+    },
+    {
+      "name": "Days 31\u201360",
+      "start_date": "2026-12-16",
+      "end_date": "2027-01-14",
+      "focus": "Run an approved read-only supervised trial",
+      "exit_evidence": "Paired time, accepted outputs, corrections, fallback, and stop logs"
+    },
+    {
+      "name": "Days 61\u201390",
+      "start_date": "2027-01-15",
+      "end_date": "2027-02-13",
+      "focus": "Review reliability, authority, full cost, and observed outcomes",
+      "exit_evidence": "Human continue, change, or retire decision with cited evidence"
+    }
+  ],
+  "value_context": {
+    "source": "Chapter 14 fictional recorded evaluation",
+    "projected_net_value": -3216.0,
+    "currency": "fictional USD",
+    "delivery_improvement": "NOT_MEASURED"
+  },
+  "day_90_decision": "HUMAN_REVIEW_REQUIRED",
+  "scale_decision": "NO_AUTOMATIC_EXPANSION",
+  "execution": "none",
+  "publication": "none"
+}

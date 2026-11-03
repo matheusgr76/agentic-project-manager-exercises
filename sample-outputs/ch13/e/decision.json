@@ -1,0 +1,14 @@
+{
+  "request_id": "REQ-13-05",
+  "action": "update_issue",
+  "target": "GH-41",
+  "actor_role": "pm",
+  "identity_source": "fictional trusted context",
+  "source_id": "RUN-11-01",
+  "approval_id": "APP-13-02",
+  "policy_version": "v1",
+  "state": "DENIED_APPROVAL_EXPIRED",
+  "reason": "Approval expired before the request",
+  "execution": "none",
+  "publication": "none"
+}

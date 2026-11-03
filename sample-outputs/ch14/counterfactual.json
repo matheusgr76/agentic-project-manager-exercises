@@ -1,0 +1,83 @@
+{
+  "scenario": "counterfactual",
+  "evidence_level": "FICTIONAL_SAMPLE_PROJECTION",
+  "currency": "fictional USD",
+  "sample_count": 6,
+  "pilot_outputs_accepted": 6,
+  "false_alerts": 1,
+  "sample_baseline_minutes": 395,
+  "sample_assisted_minutes": 277,
+  "sample_net_minutes_saved": 118,
+  "projected_monthly_task_volume": 24,
+  "projected_monthly_labor_value": 472.0,
+  "monthly_recurring_cost": 240,
+  "one_time_build_cost": 2400,
+  "evaluation_months": 12,
+  "total_cost": 5280,
+  "projected_net_value": 384.0,
+  "projected_return_percent": 7.3,
+  "simple_payback_months": 10.3,
+  "delivery_improvement": "NOT_MEASURED",
+  "details": [
+    {
+      "sample_id": "F-01",
+      "task": "weekly_report",
+      "baseline_minutes": 90,
+      "assisted_minutes": 35,
+      "fallback_minutes": 0,
+      "net_minutes_saved": 55,
+      "pilot_accepted": true,
+      "false_alert": false
+    },
+    {
+      "sample_id": "F-02",
+      "task": "weekly_report",
+      "baseline_minutes": 80,
+      "assisted_minutes": 50,
+      "fallback_minutes": 0,
+      "net_minutes_saved": 30,
+      "pilot_accepted": true,
+      "false_alert": false
+    },
+    {
+      "sample_id": "F-03",
+      "task": "weekly_report",
+      "baseline_minutes": 75,
+      "assisted_minutes": 75,
+      "fallback_minutes": 0,
+      "net_minutes_saved": 0,
+      "pilot_accepted": true,
+      "false_alert": false
+    },
+    {
+      "sample_id": "F-04",
+      "task": "dependency_review",
+      "baseline_minutes": 45,
+      "assisted_minutes": 22,
+      "fallback_minutes": 0,
+      "net_minutes_saved": 23,
+      "pilot_accepted": true,
+      "false_alert": false
+    },
+    {
+      "sample_id": "F-05",
+      "task": "dependency_review",
+      "baseline_minutes": 55,
+      "assisted_minutes": 40,
+      "fallback_minutes": 0,
+      "net_minutes_saved": 15,
+      "pilot_accepted": true,
+      "false_alert": false
+    },
+    {
+      "sample_id": "F-06",
+      "task": "dependency_review",
+      "baseline_minutes": 50,
+      "assisted_minutes": 55,
+      "fallback_minutes": 0,
+      "net_minutes_saved": -5,
+      "pilot_accepted": true,
+      "false_alert": true
+    }
+  ]
+}
