@@ -1,0 +1,8 @@
+{
+  "a": {"actor_role": "agent", "identity_source": "fictional trusted context"},
+  "b": {"actor_role": "agent", "identity_source": "fictional trusted context"},
+  "c": {"actor_role": "pm", "identity_source": "fictional trusted context"},
+  "d": {"actor_role": "pm", "identity_source": "fictional trusted context"},
+  "e": {"actor_role": "pm", "identity_source": "fictional trusted context"},
+  "f": {"actor_role": "agent", "identity_source": "fictional trusted context"}
+}

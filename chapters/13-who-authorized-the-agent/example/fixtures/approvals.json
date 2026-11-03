@@ -1,0 +1,12 @@
+{
+  "APP-13-01": {
+    "status": "APPROVED", "action": "publish_report", "target": "weekly-status",
+    "approver_role": "project_sponsor", "policy_version": "v1",
+    "expires_at_utc": "2026-11-12T10:00:00Z"
+  },
+  "APP-13-02": {
+    "status": "APPROVED", "action": "update_issue", "target": "GH-41",
+    "approver_role": "issue_owner", "policy_version": "v1",
+    "expires_at_utc": "2026-11-12T09:00:00Z"
+  }
+}

@@ -115,6 +115,19 @@ python chapters/12-when-the-agent-breaks/example/health_monitor.py --case c
 
 Inspect `outputs/<case>/health.json`, `outputs/attempts.jsonl`, and `outputs/ledger.json`. The [Chapter 12 guide](chapters/12-when-the-agent-breaks/README.md) explains the fictional partial retrieval, bounded retry, stale source, and replay check. The gate leaves every passing view for PM review; it does not publish it.
 
+### Chapter 13 — check authority before action
+
+~~~text
+python chapters/13-who-authorized-the-agent/example/authority_gate.py --case a
+python chapters/13-who-authorized-the-agent/example/authority_gate.py --case b
+python chapters/13-who-authorized-the-agent/example/authority_gate.py --case c
+python chapters/13-who-authorized-the-agent/example/authority_gate.py --case d
+python chapters/13-who-authorized-the-agent/example/authority_gate.py --case e
+python chapters/13-who-authorized-the-agent/example/authority_gate.py --case f
+~~~
+
+Inspect `outputs/<case>/decision.json` and `outputs/audit.jsonl`. The [Chapter 13 guide](chapters/13-who-authorized-the-agent/README.md) explains the fictional actor context, action scopes, exact approvals, and untrusted source text. `SIMULATED_AUTHORIZED` means a local policy check passed; it does not execute or publish anything.
+
 ## If something fails
 
 - **Python command not found:** install Python from the official page above, then open a new terminal and check python --version.
