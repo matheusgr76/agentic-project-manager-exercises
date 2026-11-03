@@ -8,7 +8,7 @@ You can use this repository without a GitHub account, Microsoft Office, a compan
 2. Open the extracted folder. You should see this file, README.md, the chapters folder, and the workshop folder together.
 3. For Chapters 1–3, open the linked CSV in Google Sheets or a text editor. Make your own assessment, use the chapter's copyable prompt, then inspect its worked output.
 
-## Chapters 4–7: run before you build
+## Chapters 4–8: run before you build
 
 These examples use **Python 3.10 or newer** and only its built-in libraries. If Python is not available, ask your coding assistant to help you set it up from the [official Python download page](https://www.python.org/downloads/). You can check it with:
 
@@ -59,6 +59,16 @@ python chapters/07-dependency-agent/example/agent.py --scenario a --exception-fi
 ~~~
 
 The agent accepts the exception, chooses three local records to inspect, updates a local exception register, and stops before a human approval is needed. Open chapters/07-dependency-agent/example/outputs/a/investigation.json and compare it with the [sample investigation](chapters/07-dependency-agent/example/sample-investigation.md). This offline example has explicit decision rules; the [model-assisted prompt](chapters/07-dependency-agent/example/investigation-prompt.md) is a separate learning path and needs an approved model environment.
+
+### Chapter 8 — discover a possible release risk
+
+After Chapter 7 Scenario A, copy this command:
+
+~~~text
+python chapters/08-risk-analyst/example/risk_analyst.py --scenario a --investigation chapters/07-dependency-agent/example/outputs/a/investigation.json
+~~~
+
+Open chapters/08-risk-analyst/example/outputs/a/analysis.json. Three invented, dated signals point to a possible R1 risk, with a separate Chapter 7 context field and a human-review stop. Run `--scenario b` and `--scenario c` to see resolved and stale signals excluded. Compare with the [Chapter 8 guide](chapters/08-risk-analyst/README.md). The new scenario dates are fictional future test data, not observed Acme results.
 
 ## If something fails
 
