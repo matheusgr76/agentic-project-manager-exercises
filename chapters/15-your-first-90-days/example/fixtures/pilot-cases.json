@@ -1,0 +1,54 @@
+{
+  "a": {
+    "pilot_id": "ACME-90-01",
+    "start_date": "2026-11-16",
+    "owner": "Acme PM",
+    "problem": "Prepare a source-backed weekly status draft",
+    "scope": "Local draft from approved reporting records",
+    "baseline": {"sample_count": 8, "median_total_minutes": 75, "status": "fictional planning assumption"},
+    "target": {"sample_count": 10, "min_accepted": 9, "max_median_total_minutes": 60},
+    "data_access": {"mode": "read_only", "approved": true, "source": "fictional local packet"},
+    "human_review": true,
+    "stop_conditions": ["missing source date", "decision conflict", "unapproved action request"]
+  },
+  "b": {
+    "pilot_id": "ACME-90-02", "start_date": "2026-11-16", "owner": "Acme PM",
+    "problem": "Prepare a source-backed weekly status draft",
+    "scope": "Local draft from approved reporting records",
+    "baseline": {"sample_count": 0, "median_total_minutes": null, "status": "not collected"},
+    "target": {"sample_count": 10, "min_accepted": 9, "max_median_total_minutes": 60},
+    "data_access": {"mode": "read_only", "approved": true, "source": "fictional local packet"},
+    "human_review": true,
+    "stop_conditions": ["missing source date", "decision conflict", "unapproved action request"]
+  },
+  "c": {
+    "pilot_id": "ACME-90-03", "start_date": "2026-11-16", "owner": "Acme PM",
+    "problem": "Prepare a source-backed weekly status draft",
+    "scope": "Local draft plus issue changes",
+    "baseline": {"sample_count": 8, "median_total_minutes": 75, "status": "fictional planning assumption"},
+    "target": {"sample_count": 10, "min_accepted": 9, "max_median_total_minutes": 60},
+    "data_access": {"mode": "issue_write", "approved": false, "source": "fictional local packet"},
+    "human_review": true,
+    "stop_conditions": ["missing source date", "decision conflict", "unapproved action request"]
+  },
+  "d": {
+    "pilot_id": "ACME-90-04", "start_date": "2026-11-16", "owner": "Acme PM",
+    "problem": "Prepare a source-backed weekly status draft",
+    "scope": "Local draft from approved reporting records",
+    "baseline": {"sample_count": 8, "median_total_minutes": 75, "status": "fictional planning assumption"},
+    "target": {"sample_count": 0, "min_accepted": 0, "max_median_total_minutes": null},
+    "data_access": {"mode": "read_only", "approved": true, "source": "fictional local packet"},
+    "human_review": true,
+    "stop_conditions": ["missing source date", "decision conflict", "unapproved action request"]
+  },
+  "e": {
+    "pilot_id": "ACME-90-05", "start_date": "2026-11-16", "owner": "Acme PM",
+    "problem": "Prepare a source-backed weekly status draft",
+    "scope": "Local draft from approved reporting records",
+    "baseline": {"sample_count": 8, "median_total_minutes": 75, "status": "fictional planning assumption"},
+    "target": {"sample_count": 10, "min_accepted": 9, "max_median_total_minutes": 60},
+    "data_access": {"mode": "read_only", "approved": true, "source": "fictional local packet"},
+    "human_review": true,
+    "stop_conditions": []
+  }
+}
