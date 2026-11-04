@@ -43,4 +43,4 @@ The output is deliberately limited. It does not send the drafted clarification, 
 
 This is an educational example, not a production integration or a general-purpose agent framework.
 
-For a model-assisted variation, see the [runtime prompt example](investigation-prompt.md). The runnable code does not call a model; it demonstrates the same evidence-driven tool loop and permission boundary without requiring credentials.
+This rule-based code does not call a model; it demonstrates the same evidence-driven tool loop and permission boundary without requiring credentials. For a version where a language model chooses each next read, see the [model-driven agent](../model-agent/README.md). It needs an API key, costs money per run, and its live behavior is not yet verified; its offline tests are. The [runtime prompt example](investigation-prompt.md) shows the model's assignment in prose.
