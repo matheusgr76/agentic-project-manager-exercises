@@ -36,7 +36,7 @@ class HealthMonitorTests(unittest.TestCase):
     def test_partial_retrieval_stops_then_repaired_second_attempt_passes(self) -> None:
         blocked = MONITOR.run("b", self.output_dir)
         self.assertEqual(blocked["state"], "BLOCKED_SOURCE")
-        self.assertEqual(json.loads((self.output_dir / "ledger.json").read_text()), {})
+        self.assertEqual(json.loads((self.output_dir / "ledger.json").read_text(encoding="utf-8")), {})
         recovered = MONITOR.run("b_recovered", self.output_dir)
         self.assertEqual(recovered["state"], "READY_FOR_PM_REVIEW")
         self.assertEqual(recovered["attempt"], 2)
@@ -45,7 +45,7 @@ class HealthMonitorTests(unittest.TestCase):
         result = MONITOR.run("c", self.output_dir)
         self.assertEqual(result["risk_age_days"], 7)
         self.assertEqual(result["state"], "BLOCKED_STALE")
-        self.assertEqual(json.loads((self.output_dir / "ledger.json").read_text()), {})
+        self.assertEqual(json.loads((self.output_dir / "ledger.json").read_text(encoding="utf-8")), {})
 
     def test_changed_payload_under_successful_run_id_requires_review(self) -> None:
         row = MONITOR.case_row(HERE / "cases.csv", "a")
