@@ -6,6 +6,7 @@ import json
 import os
 import subprocess
 import sys
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
@@ -365,17 +366,56 @@ class LiveCheckScriptTests(unittest.TestCase):
                 return submit(3, refs=(issue,))   # cites only the issue, so some cases will differ
 
         out = Path(tempfile.mkdtemp())
-        with mock.patch.object(live_check.ma, "AnthropicClient", Fake), \
-                mock.patch.dict(os.environ, {"ANTHROPIC_API_KEY": "x"}), \
-                mock.patch.object(sys, "argv", ["live_check.py", "--output-dir", str(out)]):
-            live_check.main()
-        report = rd(out / "live-run-report.md")
+        self.addCleanup(shutil.rmtree, out, True)
+        self.fake = Fake
+
+        def batch(*extra):
+            with mock.patch.object(live_check.ma, "AnthropicClient", Fake), \
+                    mock.patch.dict(os.environ, {"ANTHROPIC_API_KEY": "x"}), \
+                    mock.patch.object(sys, "argv", ["live_check.py", "--output-dir", str(out), *extra]):
+                live_check.main()
+
+        batch()
+        folders = sorted(d for d in out.iterdir() if d.is_dir())
+        self.assertEqual(len(folders), 1)
+        report = rd(folders[0] / "live-run-report.md")
         for name in ("| a |", "| b |", "| c |", "| variation |"):
             self.assertIn(name, report)
         self.assertIn("NO:", report)                      # unfavorable rows are kept, not hidden
-        self.assertIn("calculation from usage, not a billing statement", report)
+        self.assertIn("not a billing statement", report)
         self.assertIn("fake-model", report)
+        self.assertIn("python live_check.py --output-dir", report)          # complete command recorded
+        self.assertIn("built-in defaults", report)
+        self.assertIn("platform.claude.com/docs/en/docs/about-claude/pricing", report)
+        self.assertNotIn("worst", report.lower())
 
+        # A rerun keeps the first batch and adds a second folder.
+        first_report = report
+        batch()
+        folders = sorted(d for d in out.iterdir() if d.is_dir())
+        self.assertEqual(len(folders), 2)
+        self.assertEqual(rd(folders[0] / "live-run-report.md"), first_report)
+
+        # Price overrides must show up, with their source.
+        batch("--input-price", "2", "--output-price", "10", "--price-source", "https://example.test/prices", "--price-checked", "2026-11-04")
+        newest = max((d for d in out.iterdir() if d.is_dir()), key=lambda d: d.stat().st_mtime_ns)
+        over = rd(newest / "live-run-report.md")
+        self.assertIn("Input: $2.0 per million", over)
+        self.assertIn("output: $10.0 per million", over)
+        self.assertIn("OVERRIDDEN", over)
+        self.assertIn("https://example.test/prices", over)
+        self.assertIn("2026-11-04", over)
+        self.assertIn("--input-price 2 --output-price 10", over)
+        # cost = 3 calls' worth: 1000 in * $2/M + 100 out * $10/M = 0.003 per case
+        self.assertIn("| 0.00300 |", over)
+
+    def test_override_without_source_is_refused(self):
+        import live_check
+        with mock.patch.dict(os.environ, {"ANTHROPIC_API_KEY": "x"}), \
+                mock.patch.object(sys, "argv", ["live_check.py", "--input-price", "2", "--output-dir", tempfile.mkdtemp()]):
+            with self.assertRaises(SystemExit) as cm:
+                live_check.main()
+        self.assertIn("--price-source", str(cm.exception))
 
 if __name__ == "__main__":
     unittest.main()

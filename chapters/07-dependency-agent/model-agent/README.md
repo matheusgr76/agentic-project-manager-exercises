@@ -13,7 +13,7 @@ Here a language model chooses each next tool call. The Python runtime executes t
 | Account | An Anthropic API account and key from console.anthropic.com. A chat subscription does not include API use |
 | Key | Set `ANTHROPIC_API_KEY` in your terminal. Never paste it into a file in this repository |
 | Model | Default `claude-haiku-5-5`. Change with `ACME_MODEL` |
-| Cost (estimate, not observed) | A run is bounded at 10 model calls. Estimated from the size of the offline transcripts (characters ÷ 4): a typical 4-call run sends about 3,300 input and 250 output tokens; a worst-case 10-call run about 15,000 input and 3,500 output tokens. At the Haiku 5.5 list prices reported on Anthropic's pricing page ($0.10 input, $0.50 output per million tokens, prompts up to 100,000 tokens) that is about $0.0005 typical and $0.003 worst case. On a model priced 20 times higher, up to about $0.07. Check current prices; `live_check.py` reports observed token usage and the cost calculated from it |
+| Cost (estimate, not observed) | A run is bounded at 10 model calls. Estimated from the size of the offline transcripts (characters ÷ 4): a typical 4-call run sends about 3,300 input and 250 output tokens; a high-usage 10-call run about 15,000 input and 3,500 output tokens. At the Haiku 5.5 list prices listed on [Anthropic's pricing page](https://platform.claude.com/docs/en/docs/about-claude/pricing) (checked 2026-11-04 through secondary reports only, because the official page could not be fetched; $0.10 input, $0.50 output per million tokens, prompts up to 100,000 tokens) that is about $0.0005 typical and $0.003 high-usage. These are estimates, not bounds: the number of calls is capped, but the size of each prompt is not. On a model priced 20 times higher, up to about $0.07. Check current prices; `live_check.py` reports observed token usage and the cost calculated from it |
 
 ## Run it (from this folder)
 
@@ -26,7 +26,7 @@ python live_check.py                                 # all four cases and one re
 python -m unittest discover -s tests -v              # offline, free, no key
 ~~~
 
-Outputs appear in `outputs/<scenario>/`: `investigation.json` (result), `exception-register.json` (the one permitted write), `transcript.md` and `transcript.json` (every tool request and what the runtime returned). `live_check.py` writes to `outputs/live/` and adds `live-run-report.md`. The folder is ignored by Git.
+Outputs appear in `outputs/<scenario>/`: `investigation.json` (result), `exception-register.json` (the one permitted write), `transcript.md` and `transcript.json` (every tool request and what the runtime returned). `outputs/` is ignored by Git. `live_check.py` instead writes to `evidence/live/<UTC timestamp>/` (one new folder per batch, never overwritten, meant to be committed) and adds `live-run-report.md` there.
 
 ## Three different limits
 
