@@ -2,7 +2,8 @@
 
 Run from this folder, with ANTHROPIC_API_KEY set:   python live_check.py
 It runs every case once (use --repeats 3 to see how stable the model is), keeps every result,
-whether favorable or not, and writes outputs/live/live-run-report.md. This costs money; see the README.
+whether favorable or not, and writes evidence/live/<UTC timestamp>/live-run-report.md. Each batch gets its
+own timestamped folder, so a rerun never overwrites earlier evidence. This costs money; see the README.
 """
 
 from __future__ import annotations
@@ -11,6 +12,7 @@ import argparse
 import json
 import os
 import platform
+import shlex
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -19,10 +21,11 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import model_agent as ma  # noqa: E402
 
-# Prices are USD per million tokens for prompts up to 100,000 tokens. Check the current official
-# pricing page before relying on them; override with --input-price and --output-price.
+# Prices are USD per million tokens for prompts up to 100,000 tokens (a higher tier applies above that).
+# Override with --input-price and --output-price; the report states which values were actually used.
 DEFAULT_PRICES = (0.10, 0.50)
-PRICE_NOTE = "claude-haiku-5-5 list prices reported on Anthropic's pricing page (Oct 2026): $0.10 input / $0.50 output per million tokens"
+PRICE_SOURCE = "https://platform.claude.com/docs/en/docs/about-claude/pricing"
+PRICE_CHECKED = "2026-11-04 (official page could not be fetched from the authoring sandbox; rates confirmed only through secondary reports; verify against the official page before relying on them)"
 
 EX = HERE.parent / "example" / "scenarios"
 # name, records dir, policy, issue id, expected classification, expected stop reason, ids that must be read
@@ -58,12 +61,27 @@ def main() -> None:
     p.add_argument("--repeats", type=int, default=1)
     p.add_argument("--input-price", type=float, default=DEFAULT_PRICES[0])
     p.add_argument("--output-price", type=float, default=DEFAULT_PRICES[1])
-    p.add_argument("--output-dir", type=Path, default=HERE / "outputs" / "live")
+    p.add_argument("--output-dir", type=Path, default=HERE / "evidence" / "live",
+                   help="parent folder; each batch is saved in a new timestamped subfolder")
+    p.add_argument("--price-source", default=None, help="where your --input-price/--output-price come from (required with an override)")
+    p.add_argument("--price-checked", default=None, help="date you checked that source")
     a = p.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     if not os.environ.get("ANTHROPIC_API_KEY"):
         sys.exit("ANTHROPIC_API_KEY is not set. This script calls the paid API; see README.md.")
+    overridden = (a.input_price, a.output_price) != DEFAULT_PRICES
+    if overridden and not a.price_source:
+        sys.exit("You overrode the prices. Also pass --price-source (where the prices come from) so the report can cite it.")
+    command = " ".join(["python", "live_check.py"] + [shlex.quote(x) for x in sys.argv[1:]])
+    started = datetime.now(timezone.utc)
+    batch = a.output_dir / started.strftime("%Y%m%dT%H%M%SZ")
+    n_suffix = 1
+    while batch.exists():                        # never reuse a folder: earlier evidence stays untouched
+        n_suffix += 1
+        batch = a.output_dir / f"{started.strftime('%Y%m%dT%H%M%SZ')}-{n_suffix}"
+    batch.mkdir(parents=True)
+    a.output_dir = batch
     rows, total_in, total_out = [], 0, 0
     for n in range(1, a.repeats + 1):
         for name, recs, pol, issue, cls, stop, must in CASES:
@@ -81,7 +99,9 @@ def main() -> None:
     lines = ["# Live run report", "",
              f"- Date (UTC): {datetime.now(timezone.utc).isoformat(timespec='seconds')}",
              f"- Model ID: `{model_id}`", f"- Environment: Python {platform.python_version()}, {platform.system()} {platform.release()}",
-             f"- Command: `python live_check.py --model {a.model} --repeats {a.repeats}`",
+             f"- Complete command (as typed): `{command}`",
+             f"- Settings used: model `{a.model}`, repeats {a.repeats}, input price ${a.input_price}/MTok, output price ${a.output_price}/MTok",
+             f"- Batch folder: `{batch.name}`",
              f"- Limits: {ma.load_limit(HERE / 'agent-policy.md')} reads, up to {ma.load_limit(HERE / 'agent-policy.md') + ma.MAX_EXTRA_TURNS} model turns, "
              f"{ma.API_TIMEOUT_S}s timeout, {ma.API_MAX_RETRIES} retries per call", "",
              "| Run | Classification | Stop reason | Reads | Turns | Blocked | Rejected | Tokens in/out | Cost (USD) | Matches expected |",
@@ -92,7 +112,12 @@ def main() -> None:
                      f"{u['input_tokens']}/{u['output_tokens']} | {cost:.5f} | {'Yes' if not problems else 'NO: ' + '; '.join(problems)} |")
     total = total_in / 1e6 * a.input_price + total_out / 1e6 * a.output_price
     lines += ["", f"Total tokens: {total_in} in, {total_out} out. Calculated cost: ${total:.5f} (token usage reported by the API x list prices).",
-              f"Price source: {PRICE_NOTE}. This is a calculation from usage, not a billing statement.", "",
+              "", "## Price assumptions", "",
+              f"- Input: ${a.input_price} per million tokens; output: ${a.output_price} per million tokens",
+              f"- Values: {'OVERRIDDEN on the command line (the built-in defaults of $%s / $%s were not used)' % DEFAULT_PRICES if overridden else 'built-in defaults (prompts up to 100,000 tokens)'}",
+              f"- Source: {a.price_source if overridden else PRICE_SOURCE}",
+              f"- Date checked: {a.price_checked or 'not recorded' if overridden else PRICE_CHECKED}",
+              "- This is a calculation from API-reported token usage times list prices, not a billing statement. Prompts over 100,000 tokens would use a higher tier; these runs are far below that.", "",
               "Every run is listed, including any that differ from the expected behavior. Read each `transcript.md` before drawing conclusions."]
     report = a.output_dir / "live-run-report.md"
     report.write_text("\n".join(lines) + "\n", encoding="utf-8")
