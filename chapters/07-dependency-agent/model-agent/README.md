@@ -2,7 +2,7 @@
 
 Here a language model chooses each next tool call. The Python runtime executes the calls, enforces the limits, and writes the only output. Compare with the [rule-based example](../example/README.md), which uses fixed code and no model.
 
-**Status.** The runtime rules are tested offline (30 tests, using a scripted stand-in for the model and a stub of the SDK). **No live model run has been recorded in this repository yet.** `live_check.py` runs scenarios A, B, C and the variation against the real API and writes the report. See [What is verified](#what-is-verified).
+**Status.** The runtime rules are tested offline (30 tests, using a scripted stand-in for the model and a stub of the SDK). **No live model run has been recorded in this repository yet.** **Cost note: budget about $0.003 per run (an estimate from offline transcript sizes, not an observed bill); the author chose not to run the live demonstration, so no model behavior, token count or cost has been measured here.** `live_check.py` runs scenarios A, B, C and the variation against the real API and writes the report. See [What is verified](#what-is-verified).
 
 ## Requirements and cost
 
