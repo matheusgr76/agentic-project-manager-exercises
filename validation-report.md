@@ -33,3 +33,8 @@ Run folders: `exercise-run-final-verify` (before the Chapter 8 fix) and `exercis
 - Changed this session: `chapters/08-risk-analyst/example/tests/test_risk_analyst.py`, `sample-outputs/ch08/a/analysis.json`, this report. No commit, push or merge.
 - Git could not delete lock files; one stale `.git/objects/stale-maintenance-lock-claude-20261107` (a renamed lock left by my `git fetch`) is harmless and safe to delete.
 - Official Rev A untouched.
+
+## Addendum (same day, after commit 240156c)
+- Fresh checkout: `git clone` of branch `feature/all-chapter-exercise-agent` at 240156c, run in an isolated workspace: 15 chapters, 55/55 commands exit 0.
+- Corrected v11 DOCX vs the sandbox copy of Rev A (the file delivered as "Rev A"; the author's Documents copy was not compared): 196 headings, 94 tables (0 cell changes), 94 images and 74 hyperlinks all identical; 20 of 1453 paragraphs changed, all tied to the code fixes above (Chapters 4, 6-12, 14, 15); 2 images differ (media rId424, rId427; not visually inspected here). Saved unchanged as `The Agentic Project Manager - Rev B.docx`; `Rev B.pdf` is the 179-page Word render made after that DOCX.
+- Commit author is "Claude" because no git identity is configured here. Not pushed.
