@@ -30,7 +30,7 @@ Use only fictional or otherwise approved information in an AI tool. Keep generat
 
 ## How to use this repository
 
-Want to see results before running anything? Real outputs for every chapter are in [sample-outputs](sample-outputs/README.md).
+Want to see results before running anything? Chapters 1–3 have worked outputs in their chapter folders above; runnable examples for Chapters 4–15 are in [sample-outputs](sample-outputs/README.md).
 
 1. Read the relevant chapter and its exercise README.
 2. Make your own assessment before using an assistant.

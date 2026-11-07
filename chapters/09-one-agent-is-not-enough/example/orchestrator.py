@@ -42,7 +42,7 @@ def validate_artifacts(records: Dict[str, Dict[str, object]]) -> None:
     required = {
         "dependency": ("classification", "evidence_references", "stop_reason"),
         "risk": ("classification", "evidence_references", "assessment_date"),
-        "report": ("status", "run_at_utc", "findings", "publication"),
+        "report": ("status", "run_at_utc", "findings", "publication", "issue_statuses"),
     }
     for name, fields in required.items():
         if any(field not in records[name] for field in fields):
@@ -52,6 +52,12 @@ def validate_artifacts(records: Dict[str, Dict[str, object]]) -> None:
             raise ValueError(f"{name} evidence_references must be a list")
     if not isinstance(records["report"]["findings"], list):
         raise ValueError("report findings must be a list")
+    statuses = records["report"]["issue_statuses"]
+    if not isinstance(statuses, dict) or any(
+        not isinstance(statuses.get(key), str) or not statuses[key]
+        for key in ("GH-41", "DEC-12")
+    ):
+        raise ValueError("report issue_statuses must name GH-41 and DEC-12")
     date.fromisoformat(str(records["risk"]["assessment_date"]))
     datetime.fromisoformat(str(records["report"]["run_at_utc"]).replace("Z", "+00:00"))
 
@@ -83,17 +89,24 @@ def review_handoff(
     """Keep each specialist claim distinct in the PM's review record."""
     dependency_refs = set(dependency["evidence_references"])
     risk_context = set(risk.get("chapter_7_context", []))
-    report_mentions_pending = any(
-        "DEC-12" in finding and "pending" in finding.lower()
-        for finding in report["findings"]
-    )
-    conflict = dependency["classification"] == "RESOLVED" and report_mentions_pending
+    issue_statuses = report.get("issue_statuses", {})
+    if not isinstance(issue_statuses, dict):
+        raise ValueError("report issue_statuses must be a map")
+    report_gh41 = issue_statuses.get("GH-41", "not recorded")
+    report_dec12 = issue_statuses.get("DEC-12", "not recorded")
+    conflict = dependency["classification"] == "RESOLVED" and report_gh41 in {
+        "IN_PROGRESS", "BLOCKED"
+    }
     return {
         "status": "CONFLICT" if conflict else "REVIEW_REQUIRED",
         "source_statuses": {
             "dependency": dependency["classification"],
             "risk": risk["classification"],
             "report": report["status"],
+        },
+        "report_issue_statuses": {
+            "GH-41": report_gh41,
+            "DEC-12": report_dec12,
         },
         "source_dates": {
             "dependency": "not recorded",
@@ -103,16 +116,16 @@ def review_handoff(
         "shared_references": sorted(dependency_refs & risk_context),
         "risk_signal_references": risk["evidence_references"],
         "disagreement": (
-            "Dependency says resolved while the report still says DEC-12 pending. "
-            "The source chronology must be checked."
+            "Dependency says GH-41 is resolved while the report says GH-41 is "
+            f"{report_gh41.lower().replace('_', ' ')}. The source chronology must be checked."
         ) if conflict else None,
         "freshness_note": freshness_note(risk, report),
         "pm_question": (
-            "Which DEC-12 status is current, and when did it change?"
+            "Which GH-41 status is current, and when did it change?"
             if conflict else "Are the contract and environment dates still current?"
         ),
         "proposed_action": (
-            "Reconcile DEC-12 with its owner before drafting a status conclusion."
+            "Reconcile GH-41 with its owner before drafting a status conclusion."
             if conflict else (
                 "Ask owners to refresh the risk signals and confirm a fallback sequence."
             )

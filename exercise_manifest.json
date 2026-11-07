@@ -1,0 +1,67 @@
+{
+  "chapters": [
+    {"number": 1, "guide": "chapters/01-first-management-brief/README.md", "commands": [], "artifacts": []},
+    {"number": 2, "guide": "chapters/02-initial-assessment/README.md", "commands": [], "artifacts": []},
+    {"number": 3, "guide": "chapters/03-information-flow/README.md", "commands": [], "artifacts": []},
+    {
+      "number": 4, "guide": "chapters/04-report-builder/README.md",
+      "commands": [["{python}", "-m", "workshop.report_builder"]],
+      "artifacts": ["workshop/outputs/ch4/evidence.json", "workshop/outputs/ch4/weekly-status.md"]
+    },
+    {
+      "number": 5, "guide": "chapters/05-connected-reporting/README.md",
+      "commands": [["{python}", "-m", "workshop.connected_pilot", "--case", "success"], ["{python}", "-m", "workshop.connected_pilot", "--case", "server-down"], ["{python}", "-m", "workshop.connected_pilot", "--case", "missing"], ["{python}", "-m", "workshop.connected_pilot", "--case", "injection"]],
+      "artifacts": ["workshop/outputs/ch5/success/retrieval.json", "workshop/outputs/ch5/server-down/retrieval.json", "workshop/outputs/ch5/missing/retrieval.json", "workshop/outputs/ch5/injection/retrieval.json"]
+    },
+    {
+      "number": 6, "guide": "chapters/06-scheduled-reporting/README.md",
+      "commands": [["{python}", "-m", "workshop.scheduled_run", "--case", "A"], ["{python}", "-m", "workshop.scheduled_run", "--case", "B"], ["{python}", "-m", "workshop.scheduled_run", "--case", "C"], ["{python}", "-m", "workshop.scheduled_run", "--case", "D"]],
+      "artifacts": ["workshop/outputs/ch6/a/run.json", "workshop/outputs/ch6/c/exception.json"]
+    },
+    {
+      "number": 7, "guide": "chapters/07-dependency-agent/README.md",
+      "commands": [["{python}", "chapters/07-dependency-agent/example/agent.py", "--scenario", "a", "--exception-file", "workshop/outputs/ch6/c/exception.json"], ["{python}", "chapters/07-dependency-agent/example/agent.py", "--scenario", "b"], ["{python}", "chapters/07-dependency-agent/example/agent.py", "--scenario", "c"]],
+      "artifacts": ["chapters/07-dependency-agent/example/outputs/a/investigation.json"]
+    },
+    {
+      "number": 8, "guide": "chapters/08-risk-analyst/README.md",
+      "commands": [["{python}", "chapters/08-risk-analyst/example/risk_analyst.py", "--scenario", "a", "--investigation", "chapters/07-dependency-agent/example/outputs/a/investigation.json"], ["{python}", "chapters/08-risk-analyst/example/risk_analyst.py", "--scenario", "b"], ["{python}", "chapters/08-risk-analyst/example/risk_analyst.py", "--scenario", "c"]],
+      "artifacts": ["chapters/08-risk-analyst/example/outputs/a/analysis.json"]
+    },
+    {
+      "number": 9, "guide": "chapters/09-one-agent-is-not-enough/README.md",
+      "commands": [["{python}", "chapters/09-one-agent-is-not-enough/example/orchestrator.py", "--scenario", "a"], ["{python}", "chapters/09-one-agent-is-not-enough/example/orchestrator.py", "--scenario", "b"], ["{python}", "chapters/09-one-agent-is-not-enough/example/orchestrator.py", "--scenario", "c"]],
+      "artifacts": ["chapters/09-one-agent-is-not-enough/example/outputs/a/handoff.json"]
+    },
+    {
+      "number": 10, "guide": "chapters/10-project-that-remembers/README.md",
+      "commands": [["{python}", "chapters/10-project-that-remembers/example/knowledge_base.py", "--scenario", "a"], ["{python}", "chapters/10-project-that-remembers/example/knowledge_base.py", "--scenario", "b", "--as-of", "2026-11-12"], ["{python}", "chapters/10-project-that-remembers/example/knowledge_base.py", "--scenario", "b"], ["{python}", "chapters/10-project-that-remembers/example/knowledge_base.py", "--scenario", "c"]],
+      "artifacts": ["chapters/10-project-that-remembers/example/outputs/a/knowledge.json"]
+    },
+    {
+      "number": 11, "guide": "chapters/11-pm-command-center/README.md",
+      "commands": [["{python}", "chapters/11-pm-command-center/example/dashboard.py", "--scenario", "a"], ["{python}", "chapters/11-pm-command-center/example/dashboard.py", "--scenario", "b"], ["{python}", "chapters/11-pm-command-center/example/dashboard.py", "--scenario", "c"]],
+      "artifacts": ["chapters/11-pm-command-center/example/outputs/a/index.html"]
+    },
+    {
+      "number": 12, "guide": "chapters/12-when-the-agent-breaks/README.md",
+      "commands": [["{python}", "chapters/12-when-the-agent-breaks/example/health_monitor.py", "--case", "a"], ["{python}", "chapters/12-when-the-agent-breaks/example/health_monitor.py", "--case", "a"], ["{python}", "chapters/12-when-the-agent-breaks/example/health_monitor.py", "--case", "b"], ["{python}", "chapters/12-when-the-agent-breaks/example/health_monitor.py", "--case", "b_recovered"], ["{python}", "chapters/12-when-the-agent-breaks/example/health_monitor.py", "--case", "c"]],
+      "artifacts": ["chapters/12-when-the-agent-breaks/example/outputs/a/health.json", "chapters/12-when-the-agent-breaks/example/outputs/ledger.json"]
+    },
+    {
+      "number": 13, "guide": "chapters/13-who-authorized-the-agent/README.md",
+      "commands": [["{python}", "chapters/13-who-authorized-the-agent/example/authority_gate.py", "--case", "a"], ["{python}", "chapters/13-who-authorized-the-agent/example/authority_gate.py", "--case", "b"], ["{python}", "chapters/13-who-authorized-the-agent/example/authority_gate.py", "--case", "c"], ["{python}", "chapters/13-who-authorized-the-agent/example/authority_gate.py", "--case", "d"], ["{python}", "chapters/13-who-authorized-the-agent/example/authority_gate.py", "--case", "e"], ["{python}", "chapters/13-who-authorized-the-agent/example/authority_gate.py", "--case", "f"]],
+      "artifacts": ["chapters/13-who-authorized-the-agent/example/outputs/a/decision.json", "chapters/13-who-authorized-the-agent/example/outputs/audit.jsonl"]
+    },
+    {
+      "number": 14, "guide": "chapters/14-was-it-worth-building/README.md",
+      "commands": [["{python}", "chapters/14-was-it-worth-building/example/evaluator.py", "--scenario", "recorded"], ["{python}", "chapters/14-was-it-worth-building/example/evaluator.py", "--scenario", "counterfactual"]],
+      "artifacts": ["chapters/14-was-it-worth-building/example/outputs/recorded.json", "chapters/14-was-it-worth-building/example/outputs/counterfactual.json"]
+    },
+    {
+      "number": 15, "guide": "chapters/15-your-first-90-days/README.md",
+      "commands": [["{python}", "chapters/15-your-first-90-days/example/plan_builder.py", "--case", "a"], ["{python}", "chapters/15-your-first-90-days/example/plan_builder.py", "--case", "b"], ["{python}", "chapters/15-your-first-90-days/example/plan_builder.py", "--case", "c"], ["{python}", "chapters/15-your-first-90-days/example/plan_builder.py", "--case", "d"], ["{python}", "chapters/15-your-first-90-days/example/plan_builder.py", "--case", "e"]],
+      "artifacts": ["chapters/15-your-first-90-days/example/outputs/a/plan.json", "chapters/15-your-first-90-days/example/outputs/a/plan.md"]
+    }
+  ]
+}

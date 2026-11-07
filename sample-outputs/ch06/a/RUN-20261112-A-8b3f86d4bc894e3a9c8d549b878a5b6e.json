@@ -1,0 +1,30 @@
+{
+  "case": "A",
+  "run_id": "RUN-20261112-A-8b3f86d4bc894e3a9c8d549b878a5b6e",
+  "run_at_utc": "2026-11-12T07:30:00Z",
+  "source_update_times": {
+    "github_issue": "2026-11-12T07:20:00Z",
+    "decision": null,
+    "capacity_snapshot": "2026-11-12 (date only)"
+  },
+  "status": "COMPLETE",
+  "publication": "PM approval required; nothing sent",
+  "source_inventory": {
+    "github_issue": "available",
+    "decision": "PENDING",
+    "capacity_fixture": "workshop/fixtures/current-capacity.csv",
+    "capacity_snapshot_date": "2026-11-12"
+  },
+  "issue_statuses": {
+    "GH-41": "BLOCKED",
+    "DEC-12": "PENDING"
+  },
+  "findings": [
+    "GH-41 and DEC-12 have consistent states."
+  ],
+  "artifacts": [
+    "evidence.json",
+    "management-draft.md",
+    "engineering-draft.md"
+  ]
+}

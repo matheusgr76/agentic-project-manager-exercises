@@ -2,15 +2,15 @@
   "state": "REVIEW_REQUIRED",
   "as_of": "2026-11-12",
   "alerts": [
-    "Risk assessment predates the report; confirm its signals again before using it as current. Dependency investigation has no dated run field."
+    "Risk assessment 2026-11-09; report 2026-11-12. Risk assessment predates the report; confirm its signals again before using it as current. Dependency investigation has no dated run field."
   ],
   "facts": [
     {
       "label": "Decision DEC-12/v2",
       "value": "PENDING",
-      "quality": "CURRENT",
+      "quality": "As of 2026-11-12; source effective 2026-11-05; authority decision_log; CURRENT",
       "sources": [
-        "E-01: acme-practice-packet/inputs/decisions.csv"
+        "E-01: chapters/10-project-that-remembers/example/fixtures/decision-snapshot.md"
       ]
     },
     {
@@ -18,7 +18,7 @@
       "value": "UNDATED_CONTEXT",
       "quality": "No dated as-of claim",
       "sources": [
-        "E-02: chapters/07-dependency-agent/example/expected-results.md"
+        "E-02: sample-outputs/ch07/a/investigation.json"
       ]
     },
     {
@@ -36,7 +36,7 @@
       "value": "HYPOTHESIS",
       "quality": "Hypothesis; review state CURRENT",
       "sources": [
-        "E-03: chapters/09-one-agent-is-not-enough/example/fixtures/risk-a.json"
+        "E-03: chapters/10-project-that-remembers/example/fixtures/risk-snapshot.md"
       ]
     }
   ],

@@ -1,5 +1,8 @@
 # Expected fictional plan states
 
+Case A includes a specific accepted-output rule. A missing rule produces
+`ACCEPTANCE_RULE_MISSING` and blocks the plan, even if the numeric target exists.
+
 | Case | State | Blocking condition |
 | --- | --- | --- |
 | A | `PLAN_READY_FOR_HUMAN_REVIEW` | None; still no permission to deploy or expand. |

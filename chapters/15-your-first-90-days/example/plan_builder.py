@@ -46,6 +46,9 @@ def charter_gaps(pilot: Dict[str, object]) -> List[str]:
             or not positive_int(target.get("max_median_total_minutes"))
             or target["min_accepted"] > target["sample_count"]):
         gaps.append("TARGET_MISSING")
+    accepted_output_rule = pilot.get("accepted_output_rule")
+    if not isinstance(accepted_output_rule, str) or not accepted_output_rule.strip():
+        gaps.append("ACCEPTANCE_RULE_MISSING")
     access = pilot.get("data_access")
     if (not isinstance(access, dict) or access.get("mode") != "read_only"
             or access.get("approved") is not True or not access.get("source")):
@@ -53,9 +56,14 @@ def charter_gaps(pilot: Dict[str, object]) -> List[str]:
     if pilot.get("human_review") is not True:
         gaps.append("REVIEW_MISSING")
     stops = pilot.get("stop_conditions")
+    required_stops = read_json(HERE / "required-stop-conditions.json")
+    if not isinstance(required_stops, list) or not all(
+        isinstance(item, str) and item for item in required_stops
+    ):
+        raise ValueError("Required stop policy is invalid")
     if not isinstance(stops, list) or not stops or any(
         not isinstance(item, str) or not item.strip() for item in stops
-    ):
+    ) or not set(required_stops).issubset(stops):
         gaps.append("STOP_RULE_MISSING")
     return gaps
 
@@ -105,6 +113,7 @@ def build_plan(
         "problem": pilot.get("problem", "not recorded"),
         "scope": pilot.get("scope", "not recorded"),
         "baseline": pilot.get("baseline"), "target": pilot.get("target"),
+        "accepted_output_rule": pilot.get("accepted_output_rule"),
         "stop_conditions": pilot.get("stop_conditions", []),
         "phases": phase_dates(start, gates),
         "value_context": {
@@ -137,6 +146,7 @@ def render_markdown(plan: Dict[str, object]) -> str:
         f"Target: at least {target.get('min_accepted', 'missing')} accepted of "
         f"{target.get('sample_count', 'missing')}; median assisted time at most "
         f"{target.get('max_median_total_minutes', 'missing')} minutes",
+        f"Accepted-output rule: {single_line(plan['accepted_output_rule'] or 'missing')}",
         "Stop conditions: " + ", ".join(single_line(item) for item in plan["stop_conditions"]),
         "",
     ]

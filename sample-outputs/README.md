@@ -2,7 +2,7 @@
 
 Real files produced by running the exercises, so you can read them without installing anything. Acme and every record are fictional.
 
-**How they were made:** a fresh copy of this repository, running the commands in [START-HERE.md](../START-HERE.md) in order, plus the extra scenarios and cases each chapter guide lists. Nothing was edited by hand. Your own run writes the same files to local, ignored `outputs/` folders. Wording and key order should match; exact text may differ if the code changes.
+**How they were made:** a fresh copy of this repository, running the commands in [START-HERE.md](../START-HERE.md) in order, plus the extra scenarios and cases each chapter guide lists. Your own run writes comparable files to local, ignored `outputs/` folders. Chapter 6 assigns each invocation a new run ID and keeps an ID-named record, so IDs differ between runs. Compare claims and source references rather than exact bytes.
 
 | Chapter | Folder | What to open first |
 | --- | --- | --- |

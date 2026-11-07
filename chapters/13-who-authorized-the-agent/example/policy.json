@@ -14,12 +14,14 @@
     "update_issue": {
       "actor_roles": ["pm"],
       "approver_roles": ["issue_owner"],
+      "allowed_targets": ["GH-41"],
       "approval_required": true,
       "external_effect": true
     },
     "publish_report": {
       "actor_roles": ["pm"],
       "approver_roles": ["project_sponsor"],
+      "allowed_targets": ["weekly-status", "board-status"],
       "approval_required": true,
       "external_effect": true
     }

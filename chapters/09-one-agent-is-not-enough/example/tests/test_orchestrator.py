@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from orchestrator import read_artifact, run  # noqa: E402
+from orchestrator import coordinate, read_artifact, run, scenario_paths  # noqa: E402
 
 
 class OrchestratorTests(unittest.TestCase):
@@ -32,7 +32,33 @@ class OrchestratorTests(unittest.TestCase):
         result = run("b", self.output_dir)
         self.assertEqual(result["status"], "CONFLICT")
         self.assertEqual(result["source_statuses"]["dependency"], "RESOLVED")
-        self.assertIn("DEC-12 pending", result["disagreement"])
+        self.assertIn("GH-41 is resolved", result["disagreement"])
+        self.assertIn("GH-41 is in progress", result["disagreement"])
+        self.assertEqual(result["report_issue_statuses"]["DEC-12"], "PENDING")
+
+    def test_conflict_does_not_depend_on_report_wording(self) -> None:
+        paths = scenario_paths("b", False)
+        records = {name: read_artifact(path, name) for name, path in paths.items()}
+        records["report"]["findings"] = ["GH-41 remains underway."]
+
+        result = coordinate(records)
+
+        self.assertEqual(result["status"], "CONFLICT")
+
+    def test_blocked_report_also_conflicts_with_resolved_dependency(self) -> None:
+        paths = scenario_paths("b", False)
+        records = {name: read_artifact(path, name) for name, path in paths.items()}
+        records["report"]["issue_statuses"]["GH-41"] = "BLOCKED"
+        result = coordinate(records)
+        self.assertEqual(result["status"], "CONFLICT")
+        self.assertIn("GH-41 is blocked", result["disagreement"])
+
+    def test_missing_structured_report_status_fails_visibly(self) -> None:
+        paths = scenario_paths("b", False)
+        records = {name: read_artifact(path, name) for name, path in paths.items()}
+        del records["report"]["issue_statuses"]
+        with self.assertRaisesRegex(ValueError, "missing required fields"):
+            coordinate(records)
 
     def test_missing_risk_stops_incomplete(self) -> None:
         result = run("c", self.output_dir)

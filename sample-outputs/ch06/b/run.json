@@ -1,6 +1,12 @@
 {
   "case": "B",
+  "run_id": "RUN-20261112-B-e902be6475d34b30a72e298676e24410",
   "run_at_utc": "2026-11-12T07:30:00Z",
+  "source_update_times": {
+    "github_issue": null,
+    "decision": null,
+    "capacity_snapshot": null
+  },
   "status": "INCOMPLETE",
   "publication": "PM approval required; nothing sent",
   "source_inventory": {
@@ -9,6 +15,7 @@
     "capacity_fixture": "not read",
     "capacity_snapshot_date": null
   },
+  "issue_statuses": {},
   "findings": [
     "Required GitHub issue retrieval failed."
   ],

@@ -64,9 +64,12 @@ def validate_rule(rule: Dict[str, object]) -> None:
             or type(rule.get("external_effect")) is not bool):
         raise ValueError("Authority rule is incomplete")
     if rule["external_effect"] and (
-        not rule["approval_required"] or not isinstance(rule.get("approver_roles"), list)
+        not rule["approval_required"]
+        or not isinstance(rule.get("approver_roles"), list)
+        or not isinstance(rule.get("allowed_targets"), list)
+        or not rule["allowed_targets"]
     ):
-        raise ValueError("External action requires named approver roles")
+        raise ValueError("External action requires approver roles and allowed targets")
 
 
 def evaluate(
@@ -91,6 +94,8 @@ def evaluate(
         state, reason = "DENIED_UNKNOWN_ACTION", "Action is absent from the authority matrix"
     elif actor["actor_role"] not in rule.get("actor_roles", []):
         state, reason = "DENIED_ROLE", "Actor role cannot perform this action"
+    elif rule.get("external_effect") and request["target"] not in rule["allowed_targets"]:
+        state, reason = "DENIED_TARGET", "Target is absent from the authority matrix"
     elif rule.get("external_effect") and (
         health.get("state") not in {"READY_FOR_PM_REVIEW", "ALREADY_PROCESSED"}
         or health.get("publication") != "none"

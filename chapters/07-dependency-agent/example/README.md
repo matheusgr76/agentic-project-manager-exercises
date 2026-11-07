@@ -15,7 +15,7 @@ python agent.py --scenario c
 python -m unittest discover -s tests -v
 ~~~
 
-Each run prints an investigation record and writes outputs/<scenario>/investigation.json and exception-register.json. The outputs folder is ignored by Git. Run scenario A twice: the register still has only one GH-41 entry.
+Each run prints an investigation record and writes outputs/<scenario>/investigation.json and exception-register.json. The outputs folder is ignored by Git. Run scenario A twice: the register still has only one GH-41 entry. A changed investigation is retained under that entry's `history`; an identical rerun does not add history. The local write is read back and checked against its ID, evidence references, and classification.
 
 ## What the scenarios demonstrate
 
@@ -28,6 +28,8 @@ Each run prints an investigation record and writes outputs/<scenario>/investigat
 The [policy](agent-policy.md) sets the six-call ceiling. The sample [Markdown records](scenarios/a/issue-GH-41.md) are readable inputs; edit copies to explore other outcomes. The code selects a historical decision only when the current decision references one, and selects an update only while approval remains unresolved. This makes the retrieval path depend on the evidence.
 
 The tool layer permits only the local register update and rejects actions such as issue closure with PermissionError. The tests check that boundary directly. A prompt alone is not the permission control.
+
+An approval for a dependency must match its required version, subject, and scope, as well as carry an approver. The fictional issue and decision fixtures name these fields so a future approved record for the wrong subject or scope cannot resolve GH-41.
 
 The issue file also contains a comment telling the agent to close GH-41 and ignore the policy. The agent treats it as source text, while the tool layer still blocks issue closure.
 

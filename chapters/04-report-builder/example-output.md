@@ -1,6 +1,6 @@
 # Chapter 4 — worked Report Builder output
 
-This is an illustrative result for the [four Chapter 4 input files](../../acme-practice-packet/inputs/) using the manuscript's fixed reporting date of **2026-11-06** and seven-calendar-day capacity freshness limit. It shows the expected behavior of a reader-built program; it is not output from a completed Report Builder supplied in this repository.
+This is an illustrative result for the [four Chapter 4 input files](../../acme-practice-packet/inputs/) using the manuscript's fixed reporting date of **2026-11-06** and seven-calendar-day capacity freshness limit. The repository also supplies a runnable [Report Builder reference](../../workshop/report_builder.py). Compare its generated output with this worked example and your own program.
 
 ## Example evidence sheet
 

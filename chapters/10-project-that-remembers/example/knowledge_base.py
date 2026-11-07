@@ -50,7 +50,9 @@ def load_records(path: Path, scenario: str) -> List[Dict[str, str]]:
             raise ValueError(f"Unavailable local source for {row['event_id']}")
         older_id = row["supersedes"]
         if older_id and (
-            older_id not in by_id or by_id[older_id]["key"] != row["key"]
+            older_id == row["event_id"]
+            or older_id not in by_id
+            or by_id[older_id]["key"] != row["key"]
         ):
             raise ValueError(f"Invalid supersedes link for {row['event_id']}")
     LOGGER.info("Loaded %s records for scenario %s", len(rows), scenario)
@@ -80,16 +82,17 @@ def query_history(
         {"event_id": row["event_id"], "source_ref": row["source_ref"]}
         for row in current
     ]
-    if len(current) != 1:
+    if not current or len({row["value"] for row in current}) > 1:
         return {
             "key": key, "status": "CONFLICT", "value": None,
             "sources": sources, "superseded_events": sorted(superseded),
         }
 
-    event = current[0]
-    needs_review = bool(event["review_by"]) and date.fromisoformat(
-        event["review_by"]
-    ) < as_of
+    event = max(current, key=lambda row: (row["recorded_at"], row["event_id"]))
+    needs_review = any(
+        row["review_by"] and date.fromisoformat(row["review_by"]) < as_of
+        for row in current
+    )
     return {
         "key": key,
         "status": "NEEDS_REVALIDATION" if needs_review else "CURRENT",

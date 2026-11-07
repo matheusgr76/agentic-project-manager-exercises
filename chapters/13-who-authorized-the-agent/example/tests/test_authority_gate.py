@@ -62,6 +62,18 @@ class AuthorityGateTests(unittest.TestCase):
         self.assertEqual(GATE.run("d", self.output_dir)["state"], "DENIED_APPROVAL_SCOPE")
         self.assertEqual(GATE.run("e", self.output_dir)["state"], "DENIED_APPROVAL_EXPIRED")
 
+    def test_policy_blocks_different_issue_even_with_matching_approval(self) -> None:
+        request, actor, policy, approvals, health = inputs("e")
+        request["target"] = "GH-42"
+        approvals["APP-13-02"]["target"] = "GH-42"
+        self.assertEqual(
+            GATE.evaluate(request, actor, policy, approvals, health)["state"],
+            "DENIED_TARGET",
+        )
+        del policy["actions"]["update_issue"]["allowed_targets"]
+        with self.assertRaisesRegex(ValueError, "allowed targets"):
+            GATE.evaluate(request, actor, policy, approvals, health)
+
     def test_policy_version_and_approver_role_are_checked(self) -> None:
         request, actor, policy, approvals, health = inputs("c")
         approvals["APP-13-01"]["policy_version"] = "v0"

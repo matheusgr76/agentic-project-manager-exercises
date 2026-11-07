@@ -14,7 +14,7 @@
 
 ## Separate after-action review
 
-Read [Records J–N](../../acme-practice-packet/records-chapters-1-3.md#chapter-2--separate-after-action-review). First list observations you can support and possible causes that need confirmation. Then ask the assistant for cited observations, candidate process improvements, a small pilot, a measurement plan, and three questions for team members. Do not claim time savings or root causes that the records cannot establish.
+Read [Records J–N](../../acme-practice-packet/records-chapters-1-3.md#chapter-2--separate-after-action-review). First list observations you can support and possible causes that need confirmation. For each candidate improvement, assess frequency, value, effort, error risk, and whether a person can verify the result; mark unknown factors rather than inventing them. Then ask the assistant for cited observations, candidate process improvements, a small pilot, a measurement plan, three questions for team members, and what the packet cannot establish. Do not claim time savings or root causes that the records cannot establish.
 
 ## Check the result
 
@@ -27,7 +27,7 @@ Save the packet, your assessment, prompts, both assistant versions, CEO response
 For the initial assessment, paste Records A–H after this:
 
 ~~~text
-Using only the Acme records below, prepare an Initial Project Assessment. Separate confirmed facts with record references from assumptions and unknowns. Identify dependencies, parallel work, possible decision owners (mark unconfirmed owners), and three immediate priorities. End with a management briefing of at most 180 words and questions to resolve before any delivery commitment. Do not invent a baseline, date, approved scope, or available capacity.
+Using only the Acme records below, prepare an Initial Project Assessment. Separate confirmed facts with record references from assumptions and unknowns. Identify stakeholders and their roles, dependencies, parallel work, and possible decision owners (mark unconfirmed owners). Give three immediate priorities and one question for the responsible owner of each. End with a management briefing of at most 180 words and a separate list of questions to resolve before any delivery commitment. Do not invent a baseline, date, approved scope, or available capacity.
 
 Records A–H:
 [Paste records.]
@@ -36,7 +36,7 @@ Records A–H:
 For the after-action review, paste Records J–N after this:
 
 ~~~text
-Conduct a short after-action review. Cite exact records for observations. Separate possible causes that need confirmation. Suggest low-effort improvements and one small AI-assisted pilot, including how to measure preparation time and corrections over two cycles. Do not invent time savings or claim a root cause without evidence. End with three questions for the team.
+Conduct a short after-action review. Cite exact records for observations. Separate possible causes that need confirmation. For each improvement, assess frequency, value, effort, error risk, and human verifiability; label what the packet cannot establish. Suggest one small AI-assisted pilot, including how to measure preparation time and corrections over two cycles. Do not invent time savings or claim a root cause without evidence. End with three questions for the team.
 
 Records J–N:
 [Paste records.]

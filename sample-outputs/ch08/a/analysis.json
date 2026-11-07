@@ -7,6 +7,32 @@
     "S-02",
     "S-03"
   ],
+  "evidence_signals": [
+    {
+      "id": "S-01",
+      "source": "Alpha update",
+      "as_of": "2026-11-09",
+      "team": "Alpha",
+      "status": "OPEN",
+      "dependency": "DEC-12"
+    },
+    {
+      "id": "S-02",
+      "source": "Bravo issue GH-41",
+      "as_of": "2026-11-09",
+      "team": "Bravo",
+      "status": "OPEN",
+      "dependency": "DEC-12"
+    },
+    {
+      "id": "S-03",
+      "source": "Charlie test plan",
+      "as_of": "2026-11-09",
+      "team": "Charlie",
+      "status": "OPEN",
+      "dependency": "DEC-12"
+    }
+  ],
   "chapter_7_context": [
     "GH-41",
     "DEC-12"

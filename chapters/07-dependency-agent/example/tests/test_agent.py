@@ -24,6 +24,7 @@ class DependencyAgentTests(unittest.TestCase):
         result = run_scenario("a", self.output_dir)
 
         self.assertEqual(result["classification"], "UNRESOLVED")
+        self.assertEqual(result["confidence"], "SUPPORTED")
         self.assertEqual(result["stop_reason"], "human_approval_required")
         self.assertEqual(result["retrieval_calls"], 3)
         self.assertEqual(result["evidence_references"], ["GH-41", "DEC-12", "UP-1"])
@@ -53,6 +54,7 @@ class DependencyAgentTests(unittest.TestCase):
 
         self.assertEqual(result["classification"], "UNRESOLVED")
         self.assertEqual(result["stop_reason"], "evidence_unavailable")
+        self.assertEqual(result["confidence"], "UNRESOLVED")
         self.assertEqual(result["retrieval_calls"], 2)
         self.assertEqual(result["evidence_references"], ["GH-41"])
 
@@ -73,11 +75,13 @@ class DependencyAgentTests(unittest.TestCase):
         records_dir.mkdir()
         (records_dir / "issue-GH-41.md").write_text(
             "ID: GH-41\nDependency: DEC-12\nRequired version: 2\n"
+            "Required subject: Missing-value definition\nRequired scope: R1 full integration\n"
             "Update: UP-1\nStatus: IN_PROGRESS\n",
             encoding="utf-8",
         )
         (records_dir / "decision-DEC-12.md").write_text(
             "ID: DEC-12\nVersion: 2\nStatus: APPROVED\n"
+            "Subject: Missing-value definition\nScope: R1 full integration\n"
             "Approver: Product Manager\n",
             encoding="utf-8",
         )
@@ -92,6 +96,27 @@ class DependencyAgentTests(unittest.TestCase):
         self.assertEqual(result["classification"], "RESOLVED")
         self.assertEqual(result["retrieval_calls"], 2)
         self.assertEqual(result["evidence_references"], ["GH-41", "DEC-12"])
+
+        (records_dir / "decision-DEC-12.md").write_text(
+            "ID: DEC-12\nVersion: 2\nStatus: APPROVED\n"
+            "Subject: Missing-value definition\nScope: R1 full integration\n"
+            "Approver: Not recorded\n",
+            encoding="utf-8",
+        )
+        tools = LocalTools(records_dir, self.output_dir / "exception-register.json", 6)
+        result = investigate("GH-41", tools)
+        self.assertEqual(result["classification"], "UNRESOLVED")
+        self.assertEqual(result["confidence"], "PROVISIONAL")
+
+        (records_dir / "decision-DEC-12.md").write_text(
+            "ID: DEC-12\nVersion: 2\nStatus: APPROVED\n"
+            "Subject: Missing-value definition\nScope: Other release\n"
+            "Approver: Product Manager\n",
+            encoding="utf-8",
+        )
+        tools = LocalTools(records_dir, self.output_dir / "exception-register.json", 6)
+        mismatched = investigate("GH-41", tools)
+        self.assertEqual(mismatched["classification"], "UNRESOLVED")
 
     def test_tool_layer_blocks_source_write(self) -> None:
         register_path = self.output_dir / "exception-register.json"

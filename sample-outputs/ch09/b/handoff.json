@@ -5,6 +5,10 @@
     "risk": "EMERGING_RISK_FOR_REVIEW",
     "report": "REVIEW_REQUIRED"
   },
+  "report_issue_statuses": {
+    "GH-41": "IN_PROGRESS",
+    "DEC-12": "PENDING"
+  },
   "source_dates": {
     "dependency": "not recorded",
     "risk": "2026-11-09",
@@ -19,10 +23,10 @@
     "S-02",
     "S-03"
   ],
-  "disagreement": "Dependency says resolved while the report still says DEC-12 pending. The source chronology must be checked.",
+  "disagreement": "Dependency says GH-41 is resolved while the report says GH-41 is in progress. The source chronology must be checked.",
   "freshness_note": "Risk assessment predates the report; confirm its signals again before using it as current. Dependency investigation has no dated run field.",
-  "pm_question": "Which DEC-12 status is current, and when did it change?",
-  "proposed_action": "Reconcile DEC-12 with its owner before drafting a status conclusion.",
+  "pm_question": "Which GH-41 status is current, and when did it change?",
+  "proposed_action": "Reconcile GH-41 with its owner before drafting a status conclusion.",
   "executed_action": "local handoff only",
   "publication": "none",
   "decision_owner": "Acme PM"

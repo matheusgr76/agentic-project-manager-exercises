@@ -7,8 +7,10 @@ import logging
 from datetime import datetime
 from pathlib import Path
 from typing import Dict
+from uuid import uuid4
 
 from workshop.config import (
+    INPUTS_DIR,
     CASE_MATRIX,
     OUTPUTS_DIR,
     REPOSITORY_ROOT,
@@ -30,6 +32,7 @@ def case_row(case: str) -> Dict[str, str]:
         CASE_MATRIX,
         [
             "case", "run_at_utc", "github_available", "gh41_status",
+            "gh41_source_updated_at",
             "dec12_status", "capacity_snapshot_date", "capacity_state",
             "source_comment", "expected_status",
         ],
@@ -51,7 +54,18 @@ def classify(row: Dict[str, str]) -> str:
 def new_result(row: Dict[str, str], status: str) -> Dict[str, object]:
     return {
         "case": row["case"],
+        "run_id": (
+            f"RUN-{row['run_at_utc'][:10].replace('-', '')}-{row['case']}-{uuid4().hex}"
+        ),
         "run_at_utc": row["run_at_utc"],
+        "source_update_times": {
+            "github_issue": row["gh41_source_updated_at"] or None,
+            "decision": None,
+            "capacity_snapshot": (
+                f"{row['capacity_snapshot_date']} (date only)"
+                if status != "INCOMPLETE" else None
+            ),
+        },
         "status": status,
         "publication": "PM approval required; nothing sent",
         "source_inventory": {
@@ -62,6 +76,10 @@ def new_result(row: Dict[str, str], status: str) -> Dict[str, object]:
                 row["capacity_snapshot_date"] if status != "INCOMPLETE" else None
             ),
         },
+        "issue_statuses": (
+            {"GH-41": row["gh41_status"], "DEC-12": row["dec12_status"]}
+            if status != "INCOMPLETE" else {}
+        ),
         "findings": [],
         "artifacts": [],
     }
@@ -82,16 +100,24 @@ def build_case_evidence(
         for item in capacity
     ):
         raise ValueError("Capacity fixture does not match the case matrix")
-    issue = {
-        "id": TARGET_ISSUE_ID,
-        "status": row["gh41_status"],
-        "updated_at": run_time.date().isoformat(),
-    }
+    issues = read_csv(
+        INPUTS_DIR / "issues.csv",
+        ["id", "title", "status", "owner", "updated_at", "dependency"],
+    )
+    issue = next(
+        (dict(item) for item in issues if item["id"] == TARGET_ISSUE_ID),
+        None,
+    )
+    if issue is None:
+        raise ValueError(f"Required test issue is missing: {TARGET_ISSUE_ID}")
+    issue["status"] = row["gh41_status"]
+    issue["updated_at"] = row["gh41_source_updated_at"]
     if row["source_comment"]:
         issue["comment"] = row["source_comment"]
         result["untrusted_comment_ignored"] = True
     return build_evidence(
         issue_override=issue,
+        issue_source="chapters/06-scheduled-reporting/case-matrix.csv",
         capacity_override=capacity,
         report_date=run_time.date(),
         capacity_source=CAPACITY_SOURCE,
@@ -163,6 +189,7 @@ def run(case: str, output_dir: Path) -> Dict[str, object]:
             write_drafts(evidence, output_dir, result)
 
     write_json(output_dir / "run.json", result)
+    write_json(output_dir / f"{result['run_id']}.json", result)
     LOGGER.info("Scheduled case %s finished with %s", case, status)
     return result
 

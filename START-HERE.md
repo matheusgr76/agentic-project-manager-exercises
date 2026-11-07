@@ -90,8 +90,8 @@ Open chapters/09-one-agent-is-not-enough/example/outputs/a/handoff.json. It keep
 
 ~~~text
 python chapters/10-project-that-remembers/example/knowledge_base.py --scenario a
-python chapters/10-project-that-remembers/example/knowledge_base.py --scenario b
 python chapters/10-project-that-remembers/example/knowledge_base.py --scenario b --as-of 2026-11-12
+python chapters/10-project-that-remembers/example/knowledge_base.py --scenario b
 python chapters/10-project-that-remembers/example/knowledge_base.py --scenario c
 ~~~
 

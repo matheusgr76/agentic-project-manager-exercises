@@ -33,6 +33,13 @@ class HealthMonitorTests(unittest.TestCase):
         self.assertEqual(repeat["state"], "ALREADY_PROCESSED")
         self.assertEqual(list(ledger), ["RUN-11-01"])
 
+    def test_committed_fixture_matches_chapter_eleven_sample(self) -> None:
+        fixture = MONITOR.read_json(HERE / "fixtures/view-model-a.json")
+        prior = MONITOR.read_json(
+            MONITOR.REPO_ROOT / "sample-outputs/ch11/a/view-model.json"
+        )
+        self.assertEqual(fixture, prior)
+
     def test_partial_retrieval_stops_then_repaired_second_attempt_passes(self) -> None:
         blocked = MONITOR.run("b", self.output_dir)
         self.assertEqual(blocked["state"], "BLOCKED_SOURCE")

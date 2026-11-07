@@ -5,6 +5,10 @@
     "risk": "EMERGING_RISK_FOR_REVIEW",
     "report": "REVIEW_REQUIRED"
   },
+  "report_issue_statuses": {
+    "GH-41": "IN_PROGRESS",
+    "DEC-12": "PENDING"
+  },
   "source_dates": {
     "dependency": "not recorded",
     "risk": "2026-11-09",
