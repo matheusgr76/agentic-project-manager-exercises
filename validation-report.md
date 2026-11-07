@@ -38,3 +38,9 @@ Run folders: `exercise-run-final-verify` (before the Chapter 8 fix) and `exercis
 - Fresh checkout: `git clone` of branch `feature/all-chapter-exercise-agent` at 240156c, run in an isolated workspace: 15 chapters, 55/55 commands exit 0.
 - Corrected v11 DOCX vs the sandbox copy of Rev A (the file delivered as "Rev A"; the author's Documents copy was not compared): 196 headings, 94 tables (0 cell changes), 94 images and 74 hyperlinks all identical; 20 of 1453 paragraphs changed, all tied to the code fixes above (Chapters 4, 6-12, 14, 15); 2 images differ (media rId424, rId427; not visually inspected here). Saved unchanged as `The Agentic Project Manager - Rev B.docx`; `Rev B.pdf` is the 179-page Word render made after that DOCX.
 - Commit author is "Claude" because no git identity is configured here. Not pushed.
+
+## Windows result (author's machine, 2026-11-07, Python 3.14.2, PowerShell; reported by the author, output pasted in chat)
+- `commands_only_check.py`: 15 chapters, 55/55 commands and unit tests exit 0, no missing artifacts.
+- Direct runs: workshop tests 15 OK; Chapter 7 model-agent tests 31 OK with 1 skipped (the real-SDK unreachable-API test, because `anthropic` was not installed); Chapter 12 tests 6 OK; `python -m workshop.report_builder` printed `GH-41: BLOCKED; DEC-12: PENDING`.
+- The earlier Windows failure (Chapter 12 test reading UTF-8 without an encoding) does not recur.
+- Still not run on Windows: the real-SDK test with `anthropic` installed, and the Codex content review.
