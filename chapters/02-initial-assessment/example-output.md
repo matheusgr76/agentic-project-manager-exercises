@@ -10,9 +10,17 @@ Use the [CSV packet](source-records.csv) as the evidence. This is one defensible
 
 **Unknowns:** Agreed improvement baseline and method (B); approved data definition (C); proof-of-concept access rules (B, E); confirmed capacity and closure effort (F, H); and a defensible delivery forecast (A, C, D, F, H). The records do not formally assign every decision owner.
 
+**Assumptions to validate:** Product may own proof-of-concept scope and the improvement measure (B). Alpha may own the data-definition proposal (C). Engineering leads may estimate their own teams' work (D, E). These are working assignments, not confirmed authority or capacity.
+
+**Stakeholders and roles:** The CEO requests a report (A); Product proposes proof-of-concept scope (B); Alpha works on the definition (C); Bravo needs it for full sizing and can estimate independent interfaces (D); Charlie can draft customer-facing test scenarios (E); Sales has discussed the target (G); Support awaits handover confirmation (H). Formal decision rights still need confirmation.
+
 **Dependencies and parallel work:** Alpha's definition constrains Bravo's full sizing (C, D). Bravo's independent interface estimate and Charlie's draft test scenarios can proceed in parallel (D, E). Previous-release closure may compete for engineering capacity, but the amount is unknown (F, H).
 
 **Three management priorities:** Confirm the improvement baseline and decision path with Product and engineering (B); resolve the data definition and ask Bravo what it can size now (C, D); obtain closure effort and updated allocations before giving a delivery forecast (F, H). These contacts are proposed actions, not evidence of formal ownership.
+
+**Question for each proposed owner:** Product and engineering: who will define and approve the improvement measure and baseline? Alpha's decision owner: which missing-value definition and version can be approved? Engineering leads: what closure effort remains, and which allocations can be confirmed for the forecast?
+
+**Questions before a delivery commitment:** What is the agreed measure and baseline? Which definition and access rules are approved, by whom, and for which version? What can Bravo fully estimate once those decisions are recorded? What closure effort and current capacity are confirmed? Until these are answered, no delivery date follows from the packet.
 
 ### Example briefing to the CEO
 
@@ -35,5 +43,12 @@ I is a newer Teams claim that Alpha's definition was approved Thursday morning. 
 | Support requested acceptance-criteria clarification after the planned handover meeting (N). | Ask what was missing at handover; the record does not establish who caused it. |
 
 **Small pilot:** Build one checked fact sheet and draft two audience versions from it, preserving the customer-specific qualification from J. Measure total preparation and review minutes and corrections over two reporting cycles. Do not claim savings until measured.
+
+| Candidate improvement | Frequency | Value | Effort | Error risk | Human verification |
+| --- | --- | --- | --- | --- | --- |
+| One checked fact sheet feeding two audience drafts (J, K) | Two week 6 updates are shown; ongoing frequency is unknown. | May reduce inconsistent facts; benefit is unmeasured. | Requires a source check and two reviews; minutes are unknown. | Customer-specific conditions could be dropped (J). | A PM compares both drafts with J and K before use. |
+| One owner and one durable record for copied actions (L, M) | Three copied actions appear in L; future frequency is unknown. | May reduce missed follow-up; no outcome is measured. | Record reconciliation and owner confirmation are required. | An incorrect owner could be propagated twice. | The named owner and PM check the action record. |
+
+The packet does not establish repeated time cost, a root cause for late acceptance or handover, or whether either improvement saves time. Those questions need team confirmation and two measured cycles.
 
 **Questions for the team:** Which acceptance condition was still open? Were the verbal access decision and action owner later recorded? What information did Support need at handover?

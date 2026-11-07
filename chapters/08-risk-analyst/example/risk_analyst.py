@@ -56,9 +56,13 @@ def validate_investigation(path: Optional[Path]) -> List[str]:
     if (
         record.get("classification") != "UNRESOLVED"
         or "GH-41" not in record.get("evidence_references", [])
+        or "DEC-12" not in record.get("evidence_references", [])
     ):
-        raise ValueError("Chapter 7 handoff must be an unresolved GH-41 investigation")
-    return ["GH-41", "DEC-12"]
+        raise ValueError("Chapter 7 handoff must cite unresolved GH-41 and DEC-12")
+    return [
+        reference for reference in record["evidence_references"]
+        if reference in {"GH-41", "DEC-12"}
+    ]
 
 
 def assess(rows: List[Dict[str, str]], handoff_refs: List[str]) -> Dict[str, object]:
@@ -89,6 +93,14 @@ def assess(rows: List[Dict[str, str]], handoff_refs: List[str]) -> Dict[str, obj
             "data contract and test environment are not ready."
         ) if pattern else None,
         "evidence_references": [row["id"] for row in evidence],
+        "evidence_signals": [
+            {
+                "id": row["id"], "source": row["source"], "as_of": row["as_of"],
+                "team": row["team"], "status": row["status"],
+                "dependency": row["dependency"],
+            }
+            for row in evidence
+        ],
         "chapter_7_context": handoff_refs,
         "excluded_signals": excluded,
         "evidence_quality": (
@@ -113,10 +125,31 @@ def assess(rows: List[Dict[str, str]], handoff_refs: List[str]) -> Dict[str, obj
     }
 
 
+def unavailable_result(scenario: str) -> Dict[str, object]:
+    """Stop visibly when the required fictional signal source is absent."""
+    return {
+        "assessment_date": ASSESSMENT_DATE.isoformat(),
+        "scenario": scenario,
+        "classification": "INSUFFICIENT_EVIDENCE",
+        "evidence_references": [],
+        "evidence_signals": [],
+        "chapter_7_context": [],
+        "evidence_quality": "required signal source unavailable",
+        "risk_statement": None,
+        "probability": "not estimated",
+        "executed_action": "wrote local analysis only",
+        "stop_reason": "evidence_unavailable",
+    }
+
+
 def run(scenario: str, output_dir: Path, investigation: Optional[Path] = None) -> Dict[str, object]:
     """Write one local analysis for a selected fictional scenario."""
-    rows = read_signals(HERE / "signals.csv", scenario)
-    result = assess(rows, validate_investigation(investigation))
+    try:
+        rows = read_signals(HERE / "signals.csv", scenario)
+    except FileNotFoundError:
+        result = unavailable_result(scenario)
+    else:
+        result = assess(rows, validate_investigation(investigation))
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "analysis.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     LOGGER.info("Scenario %s: %s", scenario, result["classification"])

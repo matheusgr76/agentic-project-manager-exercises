@@ -1,10 +1,10 @@
 {
   "RUN-11-01": {
-    "model_sha256": "dd3dc6083f7063ace6652951e3e923b527afb3c7059a5bdfb5918754d166af93",
+    "model_sha256": "48e0f8ddd3c53046bbef8080c5dfb179c0ee8eb2370eeb1307c9e90d22bb89f0",
     "first_review_ready_at_utc": "2026-11-12T08:00:00Z"
   },
   "RUN-11-02": {
-    "model_sha256": "dd3dc6083f7063ace6652951e3e923b527afb3c7059a5bdfb5918754d166af93",
+    "model_sha256": "48e0f8ddd3c53046bbef8080c5dfb179c0ee8eb2370eeb1307c9e90d22bb89f0",
     "first_review_ready_at_utc": "2026-11-12T08:10:00Z"
   }
 }

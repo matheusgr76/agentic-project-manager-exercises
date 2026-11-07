@@ -8,6 +8,7 @@ Blocking gaps: TARGET_MISSING
 
 Baseline: 8 samples; median 75 minutes
 Target: at least 0 accepted of 0; median assisted time at most None minutes
+Accepted-output rule: A PM accepts a draft only after checking each status claim against a dated approved source, marking unresolved approvals pending, and confirming no external action occurred.
 Stop conditions: missing source date, decision conflict, unapproved action request
 
 ## Days 1–30 (2026-11-16 to 2026-12-15)

@@ -2,6 +2,7 @@
   "GH-41": {
     "exception_id": "GH-41",
     "classification": "UNRESOLVED",
+    "confidence": "SUPPORTED",
     "evidence_references": [
       "GH-41",
       "DEC-12",
@@ -15,7 +16,8 @@
     "unresolved_questions": [
       "Who will approve the required data definition and when?"
     ],
-    "recommended_action": "Draft a clarification request for PM approval.",
+    "recommended_action": "Ask the PM to review the clarification draft.",
+    "clarification_draft": "Please confirm the approved missing-value definition, version, scope, approver, and effective date for GH-41 before full sizing proceeds.",
     "executed_action": "Updated local exception register",
     "authority_used": [
       "READ issue GH-41",
@@ -29,6 +31,7 @@
       "READ issue GH-41",
       "READ decision DEC-12",
       "READ update UP-1"
-    ]
+    ],
+    "history": []
   }
 }

@@ -12,6 +12,8 @@
 4. **Test conflict and invalidation.** Run Scenario C. Two fictional decision sources disagree at the same effective date. The answer must be CONFLICT with both references; it cannot select one by recency or confidence. Break a `supersedes` link in a copy and confirm a visible failure.
 5. **Decide when richer retrieval is justified.** Measure how often the small structured history answers actual PM questions and how often a person must correct it. Only add document search or retrieval-augmented generation if the records to be found cannot be maintained reasonably as this small index. Preserve the source, freshness, and correction rules either way.
 
+The E-01 and E-03 index dates come from separate [fictional decision](example/fixtures/decision-snapshot.md) and [risk](example/fixtures/risk-snapshot.md) snapshot notes. The shared decision CSV has no date for DEC-12, and the Chapter 9 risk artifact does not record a review-by date. Do not attribute the added Chapter 10 metadata to those earlier sources.
+
 ## Check the result
 
 The example does not call an AI model or company system. It writes one local `knowledge.json` per scenario. It does not approve a decision, close GH-41, remove a risk, send a message, or publish status. An approved DEC-12/v2 entry in the invented Scenario B only changes that decision's answer. The prior pending entry remains in history with an explicit supersession link.

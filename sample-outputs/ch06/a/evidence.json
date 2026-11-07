@@ -5,7 +5,7 @@
     "title": "Bravo integration sizing",
     "status": "BLOCKED",
     "owner": "Bravo",
-    "updated_at": "2026-11-12",
+    "updated_at": "2026-11-12T07:20:00Z",
     "dependency": "DEC-12"
   },
   "independent_issue": {
@@ -41,6 +41,9 @@
     "version": "v1"
   },
   "formal_approval": false,
+  "status_conflicts": [],
+  "approval_warning": null,
+  "issue_retrieval": null,
   "capacity": [
     {
       "team": "Alpha",
@@ -49,7 +52,9 @@
       "snapshot_date": "2026-11-12",
       "age_days": 0,
       "stale": false,
-      "source": "workshop/fixtures/current-capacity.csv"
+      "source": "workshop/fixtures/current-capacity.csv",
+      "input_file": "workshop/fixtures/current-capacity.csv",
+      "record_id": "Alpha"
     },
     {
       "team": "Bravo",
@@ -58,7 +63,9 @@
       "snapshot_date": "2026-11-12",
       "age_days": 0,
       "stale": false,
-      "source": "workshop/fixtures/current-capacity.csv"
+      "source": "workshop/fixtures/current-capacity.csv",
+      "input_file": "workshop/fixtures/current-capacity.csv",
+      "record_id": "Bravo"
     },
     {
       "team": "Charlie",
@@ -67,18 +74,44 @@
       "snapshot_date": "2026-11-12",
       "age_days": 0,
       "stale": false,
-      "source": "workshop/fixtures/current-capacity.csv"
+      "source": "workshop/fixtures/current-capacity.csv",
+      "input_file": "workshop/fixtures/current-capacity.csv",
+      "record_id": "Charlie"
     }
   ],
   "source_references": [
-    "GH-41",
-    "GH-42",
-    "GH-43",
-    "DEC-12",
-    "DEC-13",
-    "UP-1",
-    "UP-2",
-    "UP-3"
+    {
+      "input_file": "chapters/06-scheduled-reporting/case-matrix.csv",
+      "record_id": "GH-41"
+    },
+    {
+      "input_file": "acme-practice-packet/inputs/issues.csv",
+      "record_id": "GH-42"
+    },
+    {
+      "input_file": "acme-practice-packet/inputs/issues.csv",
+      "record_id": "GH-43"
+    },
+    {
+      "input_file": "acme-practice-packet/inputs/decisions.csv",
+      "record_id": "DEC-12"
+    },
+    {
+      "input_file": "acme-practice-packet/inputs/decisions.csv",
+      "record_id": "DEC-13"
+    },
+    {
+      "input_file": "acme-practice-packet/inputs/updates.md",
+      "record_id": "UP-1"
+    },
+    {
+      "input_file": "acme-practice-packet/inputs/updates.md",
+      "record_id": "UP-2"
+    },
+    {
+      "input_file": "acme-practice-packet/inputs/updates.md",
+      "record_id": "UP-3"
+    }
   ],
   "unsupported_claims": [
     "delivery date",

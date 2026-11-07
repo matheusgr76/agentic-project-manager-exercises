@@ -22,7 +22,7 @@ The committed [fixtures](fixtures/) are copies of those deterministic local outp
 | Scenario | Page state | Required PM interpretation |
 | --- | --- | --- |
 | A | REVIEW_REQUIRED | Check sources and refresh older risk signals before deciding |
-| B | CONFLICT | Reconcile the contradictory DEC-12 claim with its owner |
+| B | CONFLICT | Reconcile the contradictory GH-41 claim with its owner; keep DEC-12 pending separate |
 | C | INCOMPLETE | Re-run or retrieve the missing Risk Analyst output |
 
 Read [view-policy.md](view-policy.md), [expected-results.md](expected-results.md), and [sample-screen.md](sample-screen.md). [view-prompt.md](view-prompt.md) gives a model-assisted variation; the runnable example itself uses fixed local rules.

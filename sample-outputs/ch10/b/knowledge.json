@@ -1,22 +1,24 @@
 {
   "scenario": "b",
-  "as_of": "2026-11-12",
+  "as_of": "2026-11-15",
   "answers": {
     "DEC-12/v2": {
       "key": "DEC-12/v2",
       "status": "CURRENT",
-      "value": "PENDING",
-      "effective_at": "2026-11-05",
-      "recorded_at": "2026-11-05",
+      "value": "APPROVED",
+      "effective_at": "2026-11-14",
+      "recorded_at": "2026-11-14",
       "review_by": null,
       "authority": "decision_log",
       "sources": [
         {
-          "event_id": "E-01",
-          "source_ref": "acme-practice-packet/inputs/decisions.csv"
+          "event_id": "E-04",
+          "source_ref": "chapters/10-project-that-remembers/example/fixtures/approval-addendum.md"
         }
       ],
-      "superseded_events": []
+      "superseded_events": [
+        "E-01"
+      ]
     },
     "GH-41": {
       "key": "GH-41",
@@ -25,14 +27,14 @@
       "sources": [
         {
           "event_id": "E-02",
-          "source_ref": "chapters/07-dependency-agent/example/expected-results.md"
+          "source_ref": "sample-outputs/ch07/a/investigation.json"
         }
       ],
       "note": "Source has no effective or recorded date; no as-of claim is made."
     },
     "R1/risk": {
       "key": "R1/risk",
-      "status": "CURRENT",
+      "status": "NEEDS_REVALIDATION",
       "value": "HYPOTHESIS",
       "effective_at": "2026-11-09",
       "recorded_at": "2026-11-09",
@@ -41,7 +43,7 @@
       "sources": [
         {
           "event_id": "E-03",
-          "source_ref": "chapters/09-one-agent-is-not-enough/example/fixtures/risk-a.json"
+          "source_ref": "chapters/10-project-that-remembers/example/fixtures/risk-snapshot.md"
         }
       ],
       "superseded_events": []

@@ -1,6 +1,6 @@
 # Chapter 6 — worked scheduled-run output
 
-The [case matrix](case-matrix.csv) is a **new fictional test fixture** for this chapter, not a later update to the Chapter 4 packet. It chooses Thursday **2026-11-12 at 07:30 UTC** as the fixed test run and assumes a same-day confirmed capacity snapshot. Those are exercise assumptions; the original Chapter 4 capacity rows remain dated 2026-10-23. The statuses below illustrate how the policy should classify each case. All reports remain drafts awaiting PM approval.
+The [case matrix](case-matrix.csv) is a **new fictional test fixture** for this chapter, not a later update to the Chapter 4 packet. It chooses Thursday **2026-11-12 at 07:30 UTC** as the fixed test run, gives the simulated GH-41 read a source update time of 07:20 UTC, and assumes a same-day confirmed capacity snapshot. Those are exercise assumptions; the original Chapter 4 issue and capacity rows remain unchanged. The statuses below illustrate how the policy should classify each case. All reports remain drafts awaiting PM approval.
 
 ## Case A — available, consistent inputs
 
@@ -10,7 +10,7 @@ The [case matrix](case-matrix.csv) is a **new fictional test fixture** for this 
 
 **Management draft:** “The full integration estimate remains blocked on DEC-12. Current test capacity is recorded, but it does not resolve the product decision. The PM should confirm the decision before presenting a full forecast.” **Engineering draft:** “Keep GH-41 blocked pending DEC-12 and continue only independently supported work.” The workflow has prepared drafts, not published them.
 
-**Run record excerpt:** run time 2026-11-12T07:30:00Z; source inventory and dates; finding DEC-12 PENDING; drafts created; publication awaiting PM approval.
+**Run record excerpt:** run ID begins `RUN-20261112-A-` and ends with a unique suffix; run time 2026-11-12T07:30:00Z; simulated GH-41 source update time 2026-11-12T07:20:00Z; capacity snapshot date 2026-11-12 (time not supplied); DEC-12 effective time not supplied; finding DEC-12 PENDING; drafts created; publication awaiting PM approval. Each invocation keeps its own ID-named JSON record; `run.json` shows the latest invocation.
 
 ## Case B — GitHub retrieval fails
 

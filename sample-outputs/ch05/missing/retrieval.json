@@ -1,0 +1,11 @@
+{
+  "case": "missing",
+  "source": "fictional mock retrieval",
+  "status": "MISSING",
+  "record_id": "GH-41",
+  "evidence_created": false,
+  "error": "Selected issue was not returned",
+  "dependency_id": "DEC-12",
+  "dependency_status": "UNRESOLVED",
+  "dependency_basis": "Prior Acme packet only; current issue and decision state require review"
+}

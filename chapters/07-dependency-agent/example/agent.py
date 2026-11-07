@@ -9,6 +9,8 @@ import re
 from pathlib import Path
 from typing import Dict, List, Optional
 
+from register_store import update_register
+
 
 LOGGER = logging.getLogger(__name__)
 EXAMPLE_DIR = Path(__file__).resolve().parent
@@ -84,31 +86,20 @@ class LocalTools:
             LOGGER.warning("Blocked unauthorized action: %s", action)
             raise PermissionError(f"Action is not permitted: {action}")
 
-        register: Dict[str, object] = {}
-        if self.register_path.exists():
-            try:
-                register = json.loads(self.register_path.read_text(encoding="utf-8"))
-            except (OSError, json.JSONDecodeError) as error:
-                raise ValueError("Cannot read local exception register") from error
-
-        exception_id = str(result["exception_id"])
-        register[exception_id] = result
-        self.register_path.parent.mkdir(parents=True, exist_ok=True)
-        self.register_path.write_text(
-            json.dumps(register, indent=2, ensure_ascii=False) + "\n",
-            encoding="utf-8",
-        )
-        LOGGER.info("Updated local exception register: %s", exception_id)
+        update_register(self.register_path, result)
+        LOGGER.info("Updated local exception register: %s", result["exception_id"])
 
 
 def new_result(exception_id: str) -> Dict[str, object]:
     return {
         "exception_id": exception_id,
         "classification": "UNRESOLVED",
+        "confidence": "UNRESOLVED",
         "evidence_references": [],
         "findings": [],
         "unresolved_questions": [],
         "recommended_action": "",
+        "clarification_draft": "",
         "executed_action": "",
         "authority_used": [],
         "stop_reason": "",
@@ -136,25 +127,41 @@ def assess_decision(
     required = issue.get("required_version")
     version = decision.get("version")
     if decision.get("status") != "APPROVED":
+        result["confidence"] = "SUPPORTED"
         findings.append(f"{decision['id']} is not formally approved for version {required}.")
         if previous and previous.get("status") == "APPROVED":
             findings.append(
                 f"{previous['id']} approves version {previous.get('version')} only."
             )
         questions.append("Who will approve the required data definition and when?")
-        result["recommended_action"] = "Draft a clarification request for PM approval."
+        result["clarification_draft"] = (
+            "Please confirm the approved missing-value definition, version, scope, "
+            "approver, and effective date for GH-41 before full sizing proceeds."
+        )
+        result["recommended_action"] = "Ask the PM to review the clarification draft."
         result["stop_reason"] = "human_approval_required"
         return
 
-    if not decision.get("approver") or version != required:
-        findings.append("Approval evidence is incomplete or for the wrong version.")
-        questions.append("Which version and approver govern this dependency?")
+    subject_matches = bool(issue.get("required_subject")) and (
+        decision.get("subject") == issue.get("required_subject")
+    )
+    scope_matches = bool(issue.get("required_scope")) and (
+        decision.get("scope") == issue.get("required_scope")
+    )
+    approver = decision.get("approver", "").strip()
+    if approver.lower() in {"", "not recorded", "unknown"} or version != required or not (
+        subject_matches and scope_matches
+    ):
+        result["confidence"] = "PROVISIONAL"
+        findings.append("Approval evidence does not match the required version, subject, or scope.")
+        questions.append("Which approval governs this dependency and its scope?")
         result["recommended_action"] = "Ask the PM to verify the decision record."
         result["stop_reason"] = "human_approval_required"
         return
 
     findings.append(f"{decision['id']} approves the required version {required}.")
     result["classification"] = "RESOLVED"
+    result["confidence"] = "SUPPORTED"
     result["stop_reason"] = "investigation_complete"
 
 
@@ -204,6 +211,7 @@ def investigate(exception_id: str, tools: LocalTools) -> Dict[str, object]:
     result["authority_used"] = tools.trace.copy() + ["WRITE local exception register"]
     result["executed_action"] = "Updated local exception register"
     tools.perform("update_register", result)
+    result["register_verified"] = True
     return result
 
 

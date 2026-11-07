@@ -26,4 +26,4 @@ Extend the fictional Acme Report Builder with a simulated Thursday 07:30 run. Sh
 
 ## Check the result
 
-The normal [Chapter 4 snapshot](../../acme-practice-packet/inputs/) has GH-41 `BLOCKED`. Case C is a **separate variation**: change its status in a test copy, not the shared original. Keep policy, run logs, and results for Chapter 7.
+The normal [Chapter 4 snapshot](../../acme-practice-packet/inputs/) has GH-41 `BLOCKED`. The case matrix supplies a fictional November 12 GH-41 source update time for A, C, and D; it does not silently infer an update from the run time. Case C is a **separate variation**: change its status in a test copy, not the shared original. Keep policy, run logs, and results for Chapter 7.

@@ -5,10 +5,17 @@
   "evidence_references": [
     "S-05"
   ],
-  "chapter_7_context": [
-    "GH-41",
-    "DEC-12"
+  "evidence_signals": [
+    {
+      "id": "S-05",
+      "source": "Bravo issue GH-41",
+      "as_of": "2026-11-09",
+      "team": "Bravo",
+      "status": "OPEN",
+      "dependency": "DEC-12"
+    }
   ],
+  "chapter_7_context": [],
   "excluded_signals": [
     {
       "id": "S-04",

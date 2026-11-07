@@ -27,7 +27,7 @@
       "sources": [
         {
           "event_id": "E-02",
-          "source_ref": "chapters/07-dependency-agent/example/expected-results.md"
+          "source_ref": "sample-outputs/ch07/a/investigation.json"
         }
       ],
       "note": "Source has no effective or recorded date; no as-of claim is made."
@@ -43,7 +43,7 @@
       "sources": [
         {
           "event_id": "E-03",
-          "source_ref": "chapters/09-one-agent-is-not-enough/example/fixtures/risk-a.json"
+          "source_ref": "chapters/10-project-that-remembers/example/fixtures/risk-snapshot.md"
         }
       ],
       "superseded_events": []

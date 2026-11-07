@@ -17,6 +17,7 @@
     "min_accepted": 9,
     "max_median_total_minutes": 60
   },
+  "accepted_output_rule": "A PM accepts a draft only after checking each status claim against a dated approved source, marking unresolved approvals pending, and confirming no external action occurred.",
   "stop_conditions": [
     "missing source date",
     "decision conflict",

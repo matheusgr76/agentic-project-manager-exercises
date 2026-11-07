@@ -20,6 +20,6 @@ python chapters/08-risk-analyst/example/risk_analyst.py --scenario a --investiga
 python chapters/09-one-agent-is-not-enough/example/orchestrator.py --scenario a --from-prior-outputs
 ~~~
 
-The committed fixtures are copies of those deterministic local outputs, except Scenario B's explicitly invented contradictory dependency record. Scenario C points to a deliberately absent risk file. The coordinator does not invoke a model, agent tool, network service, or message system. It only reads JSON and writes the local handoff. The [coordination policy](coordination-policy.md) states the decision boundary; [coordination-prompt.md](coordination-prompt.md) is a separate model-assisted learning path.
+The committed fixtures are selected snapshots of the earlier deterministic outputs. They keep the fields this coordinator reads; for example, the risk fixture omits Chapter 8's detailed `evidence_signals`. Scenario B adds an explicitly invented contradictory dependency record, and Scenario C points to a deliberately absent risk file. The coordinator does not invoke a model, agent tool, network service, or message system. It only reads JSON and writes the local handoff. The [coordination policy](coordination-policy.md) states the decision boundary; [coordination-prompt.md](coordination-prompt.md) is a separate model-assisted learning path.
 
 The Chapter 8 risk assessment is dated November 9; the Chapter 6 case C report is dated November 12. This example preserves that order and asks for refreshed risk signals. It does not treat their source snapshots as simultaneous.

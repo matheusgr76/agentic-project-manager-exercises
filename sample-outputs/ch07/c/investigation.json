@@ -1,6 +1,7 @@
 {
   "exception_id": "GH-41",
   "classification": "UNRESOLVED",
+  "confidence": "UNRESOLVED",
   "evidence_references": [
     "GH-41"
   ],
@@ -11,6 +12,7 @@
     "What does the missing source establish?"
   ],
   "recommended_action": "Ask the PM to inspect the missing evidence.",
+  "clarification_draft": "",
   "executed_action": "Updated local exception register",
   "authority_used": [
     "READ issue GH-41",
@@ -22,5 +24,6 @@
   "retrieval_trace": [
     "READ issue GH-41",
     "READ decision DEC-12"
-  ]
+  ],
+  "register_verified": true
 }

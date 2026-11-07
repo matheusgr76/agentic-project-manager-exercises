@@ -8,7 +8,7 @@ These are fictional, deterministic practice outputs. Compare the JSON fields and
 
 ## B — invented contradiction
 
-`status` is `CONFLICT`. The alternate dependency fixture says `RESOLVED` without an approval record, while the report still says DEC-12 is pending. The coordinator does not choose one; it asks which decision state is current and when it changed.
+`status` is `CONFLICT`. The alternate dependency fixture says GH-41 is `RESOLVED` without an approval record, while the report's structured issue status says GH-41 is `IN_PROGRESS`. The coordinator does not choose one; it asks which GH-41 state is current and when it changed. `report_issue_statuses` also keeps DEC-12 `PENDING` as a separate claim. Changing the wording of a report finding does not change the conflict.
 
 ## C — missing specialist output
 

@@ -72,12 +72,16 @@ def build_model(
         "alerts": build_alerts(handoff, state),
         "facts": [
             {"label": "Decision DEC-12/v2", "value": decision.get("value") or decision["status"],
-             "quality": decision["status"], "sources": source_labels(decision)},
+             "quality": (
+                 f"As of {knowledge['as_of']}; source effective "
+                 f"{decision.get('effective_at') or 'undated'}; "
+                 f"authority {decision.get('authority') or 'unrecorded'}; {decision['status']}"
+             ), "sources": source_labels(decision)},
             {"label": "GH-41 investigation", "value": dependency["status"],
              "quality": "No dated as-of claim", "sources": source_labels(dependency)},
             {"label": "Reporting run", "value": handoff.get("source_statuses", {}).get(
-                "report", "Unavailable"),
-             "quality": handoff.get("source_dates", {}).get("report", "Date unavailable"),
+                "report", "not recorded"),
+             "quality": handoff.get("source_dates", {}).get("report", "not recorded"),
              "sources": ["Chapter 9 coordinator handoff"]},
         ],
         "hypotheses": [
@@ -86,7 +90,9 @@ def build_model(
              "sources": source_labels(risk)},
         ],
         "human_review": (
-            ["Reconcile missing or conflicting records before acting"]
+            ["Recover or rerun the missing Risk Analyst output before acting"]
+            if state == "INCOMPLETE" and "risk" in handoff.get("missing_artifacts", [])
+            else ["Reconcile missing or conflicting records before acting"]
             if state != "REVIEW_REQUIRED" else [
                 "Confirm DEC-12/v2 approval with its decision owner",
                 handoff.get("proposed_action", "Refresh source dates before acting"),
@@ -107,9 +113,21 @@ def build_alerts(handoff: Dict[str, object], state: str) -> List[str]:
             "Required specialist output is missing; do not treat this as a complete view."
         )
     if state == "CONFLICT":
-        alerts.append("Sources disagree. Confirm the authoritative DEC-12 record before reporting.")
+        alerts.append(
+            "Sources disagree. "
+            + str(handoff.get("pm_question") or "Confirm the disputed source before reporting.")
+        )
+        if handoff.get("disagreement"):
+            alerts.append(str(handoff["disagreement"]))
     if handoff.get("freshness_note"):
-        alerts.append(str(handoff["freshness_note"]))
+        dates = handoff.get("source_dates", {})
+        risk_date = dates.get("risk") if isinstance(dates, dict) else None
+        report_date = dates.get("report") if isinstance(dates, dict) else None
+        date_context = (
+            f"Risk assessment {risk_date}; report {str(report_date)[:10]}. "
+            if risk_date and report_date else ""
+        )
+        alerts.append(date_context + str(handoff["freshness_note"]))
     return alerts
 
 

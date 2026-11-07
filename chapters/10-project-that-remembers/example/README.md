@@ -4,13 +4,13 @@ From the repository root, with Python 3.10 or newer:
 
 ~~~powershell
 python chapters/10-project-that-remembers/example/knowledge_base.py --scenario a
-python chapters/10-project-that-remembers/example/knowledge_base.py --scenario b
 python chapters/10-project-that-remembers/example/knowledge_base.py --scenario b --as-of 2026-11-12
+python chapters/10-project-that-remembers/example/knowledge_base.py --scenario b
 python chapters/10-project-that-remembers/example/knowledge_base.py --scenario c
 python -m unittest discover -s chapters/10-project-that-remembers/example/tests -v
 ~~~
 
-Each run writes `chapters/10-project-that-remembers/example/outputs/<scenario>/knowledge.json`, replacing the previous local answer for that scenario. The output directory is ignored by Git. The records file links to repository sources; the invented [approval addendum](fixtures/approval-addendum.md) and [conflicting export](fixtures/conflicting-decision-export.md) are separate from the shared practice packet.
+Each run writes `chapters/10-project-that-remembers/example/outputs/<scenario>/knowledge.json`, replacing the previous local answer for that scenario. Run the earlier-date B query before default B so the retained B file shows the November 15 approval; inspect the earlier answer before the second command. The output directory is ignored by Git. The records file links to repository sources; the invented [approval addendum](fixtures/approval-addendum.md) and [conflicting export](fixtures/conflicting-decision-export.md) are separate from the shared practice packet.
 
 | Scenario | As-of date | What to inspect |
 | --- | --- | --- |

@@ -27,7 +27,16 @@ class CommandCenterTests(unittest.TestCase):
         self.assertEqual(model["facts"][1]["value"], "UNDATED_CONTEXT")
         self.assertEqual(model["hypotheses"][0]["value"], "HYPOTHESIS")
         self.assertIn("predates", " ".join(model["alerts"]))
+        self.assertIn("2026-11-09", " ".join(model["alerts"]))
+        self.assertIn("2026-11-12", " ".join(model["alerts"]))
         self.assertEqual(model["publication"], "none")
+
+    def test_knowledge_fixture_matches_chapter_ten_sample(self) -> None:
+        fixture = read_json(HERE / "fixtures/knowledge-a.json", "knowledge")
+        prior = read_json(
+            HERE.parents[2] / "sample-outputs/ch10/a/knowledge.json", "prior knowledge"
+        )
+        self.assertEqual(fixture, prior)
 
     def test_conflict_replaces_routine_review_steps(self) -> None:
         model = run("b", self.output_dir)
@@ -35,11 +44,16 @@ class CommandCenterTests(unittest.TestCase):
         self.assertEqual(model["human_review"], [
             "Reconcile missing or conflicting records before acting"
         ])
+        notice = " ".join(model["alerts"])
+        self.assertIn("GH-41 is resolved", notice)
+        self.assertIn("GH-41 is in progress", notice)
 
     def test_missing_specialist_marks_page_incomplete(self) -> None:
         model = run("c", self.output_dir)
         self.assertEqual(model["state"], "INCOMPLETE")
         self.assertIn("missing", " ".join(model["alerts"]).lower())
+        self.assertIn("Risk Analyst", " ".join(model["human_review"]))
+        self.assertIn("rerun", " ".join(model["human_review"]))
 
     def test_untrusted_text_is_escaped_in_html(self) -> None:
         handoff = read_json(HERE / "fixtures" / "handoff-a.json", "handoff")

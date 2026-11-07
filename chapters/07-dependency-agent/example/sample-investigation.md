@@ -14,12 +14,16 @@ This is a reader-facing rendering of the local JSON output. It is an illustrativ
 
 **Unresolved question:** Who will formally approve the required version 2 definition, and when?
 
-**Recommended action:** Draft a clarification request for PM approval.
+**Clarification draft:** “Please confirm the approved missing-value definition, version, scope, approver, and effective date for GH-41 before full sizing proceeds.” This is local text awaiting PM review; it has not been sent.
 
-**Executed action:** Update the local exception register keyed by GH-41. No message was sent and no source record was changed.
+**Recommended action:** Ask the PM to review the clarification draft.
+
+**Executed action:** Update the local exception register keyed by GH-41 and read it back to verify the ID, evidence references, and classification. Changed prior results remain under the entry's history; identical reruns do not add a duplicate. No message was sent and no source record was changed.
 
 **Authority used:** Read three local records; write one local register entry.
 
 **Stop reason:** Human approval is required for the next consequential action. The dependency remains unresolved.
+
+**Confidence:** SUPPORTED. The pending decision record supports the conclusion that the dependency remains unresolved. This assesses the evidence for the conclusion; it does not claim approval.
 
 Compare this with outputs/a/investigation.json after running the example. Wording can differ; the evidence boundary and action record should agree.

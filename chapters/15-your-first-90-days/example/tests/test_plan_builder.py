@@ -42,6 +42,14 @@ class PilotPlanTests(unittest.TestCase):
         self.assertEqual(plan["value_context"]["delivery_improvement"], "NOT_MEASURED")
         self.assertEqual(plan["scale_decision"], "NO_AUTOMATIC_EXPANSION")
         self.assertEqual(plan["execution"], "none")
+        self.assertIn("dated approved source", plan["accepted_output_rule"])
+
+    def test_missing_acceptance_rule_blocks_the_plan(self) -> None:
+        pilot, value, gates = inputs("a")
+        pilot.pop("accepted_output_rule")
+        plan = BUILDER.build_plan(pilot, value, gates)
+        self.assertEqual(plan["state"], "PLAN_BLOCKED")
+        self.assertIn("ACCEPTANCE_RULE_MISSING", plan["blocking_gaps"])
 
     def test_missing_baseline_and_target_block_the_plan(self) -> None:
         for case, gap in (("b", "BASELINE_MISSING"), ("d", "TARGET_MISSING")):
@@ -91,6 +99,7 @@ class PilotPlanTests(unittest.TestCase):
             markdown = (Path(directory) / "a/plan.md").read_text(encoding="utf-8")
             self.assertEqual(saved, plan)
             self.assertIn("Target: at least 9 accepted of 10", markdown)
+            self.assertIn("Accepted-output rule: A PM accepts", markdown)
             self.assertIn("Stop conditions: missing source date", markdown)
             self.assertIn("No automatic expansion, execution, or publication", markdown)
             self.assertEqual(plan["publication"], "none")

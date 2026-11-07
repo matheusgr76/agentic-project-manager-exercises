@@ -2,6 +2,7 @@
   "case": "C",
   "run_at_utc": "2026-11-12T07:30:00Z",
   "status": "REVIEW_REQUIRED",
+  "issue_statuses": {"GH-41": "IN_PROGRESS", "DEC-12": "PENDING"},
   "publication": "PM approval required; nothing sent",
   "source_inventory": {
     "github_issue": "available",
